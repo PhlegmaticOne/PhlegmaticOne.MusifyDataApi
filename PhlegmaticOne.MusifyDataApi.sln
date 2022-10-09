@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{90804C87-BEB3-43F4-AB32-3A512C69FD78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi", "src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.csproj", "{C710D540-0327-44E7-B1BC-C664184E336D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Tests\PhlegmaticOne.MusifyDataApi.Tests.csproj", "{8FBBD569-8374-4021-BFCA-C9936DE14D6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C710D540-0327-44E7-B1BC-C664184E336D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C710D540-0327-44E7-B1BC-C664184E336D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C710D540-0327-44E7-B1BC-C664184E336D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C710D540-0327-44E7-B1BC-C664184E336D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C710D540-0327-44E7-B1BC-C664184E336D} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{8FBBD569-8374-4021-BFCA-C9936DE14D6B} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82A85886-8500-4B7F-89BF-30F2E7363876}
+	EndGlobalSection
+EndGlobal
