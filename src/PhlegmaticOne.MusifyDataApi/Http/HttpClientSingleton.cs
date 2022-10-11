@@ -17,7 +17,13 @@ internal class HttpClientSingleton
     }
     internal static async Task<byte[]> DownloadAsync(string url)
     {
-        var songBytes = await Instance.GetByteArrayAsync(url);
-        return songBytes;
+        try
+        {
+            return await Instance.GetByteArrayAsync(url);
+        }
+        catch
+        {
+            return Array.Empty<byte>();
+        }
     }
 }

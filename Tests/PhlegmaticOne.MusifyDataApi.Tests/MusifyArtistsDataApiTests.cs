@@ -8,7 +8,7 @@ namespace PhlegmaticOne.MusifyDataApi.Tests;
 
 public class MusifyArtistsDataApiTests
 {
-    private readonly IMusifyArtistsData _musifyArtistsData;
+    private readonly IMusifyArtistsDataService _musifyArtistsData;
 
     public MusifyArtistsDataApiTests()
     {
@@ -16,7 +16,7 @@ public class MusifyArtistsDataApiTests
         serviceCollection.AddMusifyDataApi();
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
-        _musifyArtistsData = serviceProvider.GetRequiredService<IMusifyArtistsData>();
+        _musifyArtistsData = serviceProvider.GetRequiredService<IMusifyArtistsDataService>();
     }
 
     [Fact]
@@ -63,7 +63,10 @@ public class MusifyArtistsDataApiTests
     public async Task GetArtistWithAlbumsInfoAsync_IncludeSplit_Test()
     {
         var url = "https://musify.club/artist/amesoeurs-22349";
-        var artist = await _musifyArtistsData.GetArtistWithAlbumsAndTracksInfoAsync(url, SelectionType.Include, MusifyAlbumType.Split);
+        var types = MusifyReleaseTypesProvider.FromTypes(MusifyAlbumType.Split);
+        var artist = await _musifyArtistsData.GetArtistWithAlbumsAndTracksInfoAsync(url,
+            releaseTypes: types);
+
         var data = artist.Data!;
 
         AssertionHelpers.ArtistInfoAssert("Amesoeurs", "Франция", url, data);
@@ -76,8 +79,10 @@ public class MusifyArtistsDataApiTests
     public async Task GetArtistWithAlbumsInfoAsync_IncludeMoreThanOneType_Test()
     {
         var url = "https://musify.club/artist/burzum-7862";
+        var types = MusifyReleaseTypesProvider.FromTypes(MusifyAlbumType.LP, MusifyAlbumType.EP);
         var artist = await _musifyArtistsData
-            .GetArtistWithAlbumsAndTracksInfoAsync(url, SelectionType.Include, MusifyAlbumType.LP, MusifyAlbumType.EP);
+            .GetArtistWithAlbumsAndTracksInfoAsync(url, releaseTypes: types);
+
         var data = artist.Data!;
 
         Assert.Equal(15, data.Releases.Count);
@@ -87,8 +92,12 @@ public class MusifyArtistsDataApiTests
     public async Task GetArtistWithAlbumsInfoAsync_Exclude_Test()
     {
         var url = "https://musify.club/artist/amesoeurs-22349";
-        var exclude = MusifyAlbumTypesCollections.DefaultExcludeTypes.With(MusifyAlbumType.Split);
-        var artist = await _musifyArtistsData.GetArtistWithAlbumsAndTracksInfoAsync(url, SelectionType.Exclude, exclude.ToArray());
+        var exclude = MusifyReleaseTypesProvider.DefaultExcludeTypes.With(MusifyAlbumType.Split);
+
+        var artist = await _musifyArtistsData.GetArtistWithAlbumsAndTracksInfoAsync(url,
+            selectionType: SelectionType.Exclude,
+            releaseTypes: exclude);
+
         var data = artist.Data!;
 
         AssertionHelpers.ArtistInfoAssert("Amesoeurs", "Франция", url, data);

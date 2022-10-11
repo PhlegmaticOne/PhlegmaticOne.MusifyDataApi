@@ -2,5 +2,5 @@
 
 public abstract class OnlineDtoBase
 {
-    public string Url { get; init; }
+    public string Url { get; init; } = null!;
 }

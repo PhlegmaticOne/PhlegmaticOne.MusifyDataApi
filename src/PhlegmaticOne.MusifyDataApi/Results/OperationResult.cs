@@ -15,4 +15,16 @@ public class OperationResult<T> where T : class
         new(null, false, exception);
     internal static OperationResult<T> FromSuccess(T data) =>
         new(data, true);
+
+    internal static async Task<OperationResult<T>> FromActionResult(Func<Task<OperationResult<T>>> operation)
+    {
+        try
+        {
+            return await operation();
+        }
+        catch (Exception ex)
+        {
+            return FromException(ex);
+        }
+    }
 }
