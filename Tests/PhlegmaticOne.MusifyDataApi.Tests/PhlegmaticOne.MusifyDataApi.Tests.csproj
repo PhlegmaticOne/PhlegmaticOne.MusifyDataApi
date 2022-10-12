@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.csproj" />
+    <ProjectReference Include="..\..\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.Default.csproj" />
   </ItemGroup>
 
 </Project>
