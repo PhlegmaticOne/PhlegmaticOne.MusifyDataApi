@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.csproj" />
-    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.Default.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Core\PhlegmaticOne.MusifyDataApi.Core.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Default.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Models\PhlegmaticOne.MusifyDataApi.Models.csproj" />
   </ItemGroup>
 
 </Project>

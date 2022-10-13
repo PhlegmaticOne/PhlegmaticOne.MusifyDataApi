@@ -28,7 +28,7 @@ public class ArtistsDataServiceTests
     [Fact]
     public async Task GetArtistInfoWithReleases_Test()
     {
-        var artistInfo = await _artistsDataService.GetArtistWithReleases(_artistUrl);
+        var artistInfo = await _artistsDataService.GetArtistWithReleases(_artistUrl, true, true);
 
         Assert.NotNull(artistInfo);
     }
