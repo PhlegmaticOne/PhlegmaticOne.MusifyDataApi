@@ -1,4 +1,6 @@
 ﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.Downloads;
+using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers.Base;
 
 namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;
 
@@ -6,8 +8,7 @@ public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageP
 {
     public string GetCountry()
     {
-        var artistInfo = HtmlDocument.QuerySelectorAll("ul")
-            .First(x => x.ClassName == "icon-list")
+        var artistInfo = HtmlDocument.QuerySelector("ul.icon-list")!
             .Children
             .SelectMany(x => x.Children);
 
@@ -19,17 +20,14 @@ public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageP
 
     public async Task<byte[]> GetCoverAsync(bool includeCover)
     {
-        if (includeCover)
-        {
-            var image = HtmlDocument.QuerySelectorAll("img").First(x => x.ClassName == "artist-img");
-            var imageUrlPart = image.Attributes.First(s => s.Name == "src").Value;
-            return await DownloadImageAsync(imageUrlPart);
-        }
-        return Array.Empty<byte>();
+        if (!includeCover) return Array.Empty<byte>();
+
+        var image = HtmlDocument.QuerySelector("img.artist-img")!;
+        var imageUrlPart = image.Attributes.First(s => s.Name == "src").Value;
+        return await MusifyImageDownloader.DownloadImageAsync(imageUrlPart);
     }
 
-    public string GetName() => HtmlDocument.QuerySelectorAll("li")
-            .First(x => x.ClassName == "breadcrumb-item active")
+    public string GetName() => HtmlDocument.QuerySelector("li.breadcrumb-item.active")!
             .InnerHtml;
 
     public int GetTracksCount()
@@ -37,7 +35,7 @@ public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageP
         var tabsHtmlItem = HtmlDocument.QuerySelector("ul.nav.nav-tabs.nav-fill")!;
         var tracksTabLink = tabsHtmlItem.QuerySelector("a")!;
         var tracksCountText = tracksTabLink.InnerHtml
-            .Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+            .Split(new [] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
         var tracksCount = int.Parse(tracksCountText.ElementAt(1));
 
         return tracksCount;

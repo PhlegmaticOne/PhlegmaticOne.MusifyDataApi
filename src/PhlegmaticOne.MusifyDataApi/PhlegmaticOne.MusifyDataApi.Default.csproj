@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\PhlegmaticOne.MusifyDataApi.Core\PhlegmaticOne.MusifyDataApi.Core.csproj" />
+    <ProjectReference Include="..\..\PhlegmaticOne.MusifyDataApi.DataDownload.Core\PhlegmaticOne.MusifyDataApi.DataDownload.Core.csproj" />
     <ProjectReference Include="..\..\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.csproj" />
   </ItemGroup>
 

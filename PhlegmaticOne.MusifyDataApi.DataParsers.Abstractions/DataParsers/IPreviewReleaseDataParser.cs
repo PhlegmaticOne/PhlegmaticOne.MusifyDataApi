@@ -10,7 +10,7 @@ public interface IPreviewReleaseDataParser : IHtmlDataParserBase
     Task<byte[]> GetCoverAsync(bool includeCover);
     IEnumerable<GenreDto> GetGenres();
     IEnumerable<ArtistDtoBase> GetArtists();
-    string GetName();
+    string GetTitle();
     YearDtoBase GetYear();
     string GetUrl();
 }

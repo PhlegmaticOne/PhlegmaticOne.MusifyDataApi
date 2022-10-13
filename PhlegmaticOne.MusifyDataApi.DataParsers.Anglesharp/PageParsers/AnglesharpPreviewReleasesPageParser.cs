@@ -1,6 +1,7 @@
 ﻿using AngleSharp.Html.Dom;
 using PhlegmaticOne.MusifyDataApi.Core.Helpers;
 using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 
 namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;

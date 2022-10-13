@@ -5,7 +5,7 @@ using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
 
 namespace PhlegmaticOne.MusifyDataApi.Default;
 
-internal class MusifyReleasesPagedListDataService : IMusifyReleasesPagedListDataService
+public class MusifyReleasesPagedListDataService : IMusifyReleasesPagedListDataService
 {
     public Task<PagedListDto<ReleasePreviewDtoBase>> GetPreviewPagedListAsync(int pageIndex, ISearchCategoryString searchCategoryString, bool includeCovers = false)
     {

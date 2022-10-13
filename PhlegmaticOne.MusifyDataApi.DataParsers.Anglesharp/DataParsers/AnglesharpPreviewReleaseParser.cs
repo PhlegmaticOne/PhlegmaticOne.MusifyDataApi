@@ -1,17 +1,14 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
+﻿using AngleSharp.Html.Dom;
+using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
+using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
 namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers;
 
-public class AnglesharpPreviewReleaseParser : IPreviewReleaseDataParser
+public class AnglesharpPreviewReleaseParser : AnglesharpDataParserBase<IHtmlDivElement>, IPreviewReleaseDataParser
 {
-    public void InitializeFromHtmlElement(object htmlElement)
-    {
-        throw new NotImplementedException();
-    }
-
     public Task<byte[]> GetCoverAsync(bool includeCover)
     {
         throw new NotImplementedException();
@@ -27,7 +24,7 @@ public class AnglesharpPreviewReleaseParser : IPreviewReleaseDataParser
         throw new NotImplementedException();
     }
 
-    public string GetName()
+    public string GetTitle()
     {
         throw new NotImplementedException();
     }

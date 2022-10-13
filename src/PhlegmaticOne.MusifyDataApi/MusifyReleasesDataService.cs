@@ -7,14 +7,13 @@ using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
 namespace PhlegmaticOne.MusifyDataApi.Default;
 
-internal class MusifyReleasesDataService : IMusifyReleasesDataService
+public class MusifyReleasesDataService : IMusifyReleasesDataService
 {
     private readonly IHtmlParsersFactory _htmlParsersFactory;
 
-    public MusifyReleasesDataService(IHtmlParsersFactory htmlParsersFactory)
-    {
+    public MusifyReleasesDataService(IHtmlParsersFactory htmlParsersFactory) => 
         _htmlParsersFactory = htmlParsersFactory;
-    }
+
     public async Task<OperationResult<ReleaseInfoDto>> GetReleaseInfoAsync(string url,
         bool includeCover = false)
     {
@@ -48,7 +47,7 @@ internal class MusifyReleasesDataService : IMusifyReleasesDataService
         var result = new ReleaseDataDto<TrackInfoDto>();
         await InitializeRelease(result, releaseParser, url, includeCover);
 
-        var tracksEnumerable = await releaseParser.GetTracksAsync();
+        var tracksEnumerable = releaseParser.GetTracks();
 
         result.Genres = releaseParser.GetGenres().ToList();
         result.Tracks = tracksEnumerable.ToList();

@@ -6,7 +6,7 @@ using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
 namespace PhlegmaticOne.MusifyDataApi.Default;
 
-internal class MusifyTracksPagedListDataService : IMusifyTracksPagedListDataService
+public class MusifyTracksPagedListDataService : IMusifyTracksPagedListDataService
 {
     public Task<OperationResult<PagedListDto<TrackInfoDto>>> GetTracksPagedListAsync(int pageIndex, ISearchCategoryString searchCategoryString)
     {

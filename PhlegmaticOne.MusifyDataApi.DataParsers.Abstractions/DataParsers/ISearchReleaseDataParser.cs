@@ -7,7 +7,8 @@ public interface ISearchReleaseDataParser : IHtmlDataParserBase
 {
     Task<byte[]> GetCoverAsync(bool includeCover);
     int GetTracksCount();
-    string GetName();
+    string GetTitle();
+    string GetArtistName();
     string GetUrl();
     YearDtoBase GetYear();
 }

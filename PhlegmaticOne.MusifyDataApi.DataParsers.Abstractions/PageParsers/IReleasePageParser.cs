@@ -13,5 +13,5 @@ public interface IReleasePageParser : IHtmlPageParserBase
     MusifyReleaseType GetReleaseType();
     IEnumerable<GenreDto> GetGenres();
     Task<byte[]> GetReleaseCoverAsync(bool includeCover);
-    Task<IEnumerable<TrackInfoDto>> GetTracksAsync();
+    IEnumerable<TrackInfoDto> GetTracks();
 }

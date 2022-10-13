@@ -17,7 +17,9 @@ public static class StringExtensions
 
     public static string WrapWithMusifySiteAddress(this string value) =>
         MusifyConstants.SITE_URL + value;
-    public static string ToReleaseUrl(this string url) => url + MusifyConstants.RELEASE_ACTION_NAME;
+    public static string ToReleaseUrl(this string url) => url + MusifyConstants.RELEASES_ACTION_NAME;
+    public static string ToYearUrl(this int year) =>
+        $"{MusifyConstants.SITE_URL}{MusifyConstants.ALBUMS_ACTION_NAME}/{year}";
     public static string ToSearchUrl(this string searchText) =>
         WrapWithMusifySiteAddress(MusifyConstants.SEARCH_ACTION_NAME) +
         $"?{MusifyConstants.SEARCH_TEXT_PARAMETER_NAME}={searchText}";
