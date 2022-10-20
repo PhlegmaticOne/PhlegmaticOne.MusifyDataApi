@@ -6,7 +6,7 @@ using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
-public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageParser
+internal class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageParser
 {
     private readonly IMusifyDataDownloadService _musifyDataDownloadService;
     public AnglesharpArtistPageParser(IHtmlStringGetter htmlStringGetter,

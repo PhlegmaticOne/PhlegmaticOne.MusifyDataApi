@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp", "src\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.csproj", "{57071F1A-6AA3-42B6-8A8C-A0447459DB69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Default", "src\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Default.csproj", "{EF5D2085-3DF8-42F2-800F-DD776F118BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Implementation.Parsers", "src\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Implementation.Parsers.csproj", "{EF5D2085-3DF8-42F2-800F-DD776F118BB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Http", "src\PhlegmaticOne.MusifyDataApi.Http\PhlegmaticOne.MusifyDataApi.Http.csproj", "{60C6674E-F5CB-4F0A-A409-81A2F3560371}"
 EndProject
@@ -35,15 +35,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests.csproj", "{88240076-1422-441A-BE78-C04ADB3E7D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Core.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Core.Tests\PhlegmaticOne.MusifyDataApi.Core.Tests.csproj", "{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Core.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Core.Tests\PhlegmaticOne.MusifyDataApi.Core.Tests.csproj", "{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.csproj", "{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.csproj", "{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Default.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Default.Tests\PhlegmaticOne.MusifyDataApi.Default.Tests.csproj", "{B9012A9C-143A-4A73-9B79-E28D601215AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Default.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Default.Tests\PhlegmaticOne.MusifyDataApi.Default.Tests.csproj", "{B9012A9C-143A-4A73-9B79-E28D601215AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{1A151E49-DA38-4F69-B0D3-AA7672B422E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Sample", "Sample\PhlegmaticOne.MusifyDataApi.Sample\PhlegmaticOne.MusifyDataApi.Sample.csproj", "{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Sample", "Sample\PhlegmaticOne.MusifyDataApi.Sample\PhlegmaticOne.MusifyDataApi.Sample.csproj", "{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

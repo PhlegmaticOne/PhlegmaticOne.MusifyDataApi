@@ -2,6 +2,7 @@
 using PhlegmaticOne.MusifyDataApi.Core.Extensions;
 using PhlegmaticOne.MusifyDataApi.Core.Helpers;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
@@ -9,13 +10,13 @@ using PhlegmaticOne.MusifyDataApi.Models.Artists.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
 
-namespace PhlegmaticOne.MusifyDataApi.Default;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
-public class MusifyArtistsDataService : IMusifyArtistsDataService
+public class MusifyArtistsDataService : IMusifyArtistsDataService, IUseHtmlParsers
 {
-    private readonly IHtmlParsersFactory _htmlParsersFactory;
+    private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyArtistsDataService(IHtmlParsersFactory htmlParsersFactory) => 
+    public MusifyArtistsDataService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ArtistInfoDto>> GetArtistInfoAsync(string url, bool includeCover = false) =>
@@ -34,7 +35,7 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService
     {
         var releasesUrl = url.AsMusifyUrl().ToReleaseUrl().ToStringUrl();
         var releasesParser = await _htmlParsersFactory
-            .GetPageParserAsync<IArtistPreviewReleasesPageParser>(releasesUrl);
+            .CreatePageParserAsync<IArtistPreviewReleasesPageParser>(releasesUrl);
         var releasesElements = releasesParser
             .GetReleaseHtmlItems(selectionType, releaseTypes);
 
@@ -43,7 +44,7 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService
 
         foreach (var releaseElement in releasesElements)
         {
-            var releaseParser = _htmlParsersFactory.GetDataParser<IPreviewReleaseDataParser>(releaseElement);
+            var releaseParser = _htmlParsersFactory.CreateDataParser<IPreviewReleaseDataParser>(releaseElement);
             var releaseDto = new ReleaseArtistPreviewDto
             {
                 ArtistName = artistInfoResult.Name,
@@ -62,7 +63,7 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService
     private async Task<T> GetArtistInfoAsyncPrivate<T>(string url,
         bool includeCover = false) where T : ArtistInfoDto, new()
     {
-        var artistParser = await _htmlParsersFactory.GetPageParserAsync<IArtistPageParser>(url);
+        var artistParser = await _htmlParsersFactory.CreatePageParserAsync<IArtistPageParser>(url);
         var result = new T
         {
             CoverData = await artistParser.GetCoverAsync(includeCover),

@@ -11,7 +11,7 @@ using PhlegmaticOne.MusifyDataApi.Models.Years;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
-public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePageParser
+internal class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePageParser
 {
     private readonly IMusifyDataDownloadService _musifyDataDownloadService;
 
@@ -28,10 +28,7 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
             return split[0].Trim();
         }
 
-        var header = HtmlDocument
-            .QuerySelector("h1")!
-            .InnerHtml
-            .Replace("&amp;", "&");
+        var header = HtmlStringCleaner.ClearString(HtmlDocument.QuerySelector("h1")!.InnerHtml);
 
         if (IsMoreThanOneArtistCheck())
         {

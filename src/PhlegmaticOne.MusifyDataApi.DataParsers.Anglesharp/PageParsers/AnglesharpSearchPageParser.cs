@@ -4,7 +4,7 @@ using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
-public class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPageParser
+internal class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPageParser
 {
     public AnglesharpSearchPageParser(IHtmlStringGetter htmlStringGetter) : base(htmlStringGetter) { }
 

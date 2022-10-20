@@ -1,6 +1,7 @@
 ﻿using Moq;
 using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
 namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
 
@@ -17,7 +18,7 @@ public class MusifyDataSearchServiceTests
         var searchArtistDataParser = ParsersMocksCollection
             .GetSearchArtistDataParser("Name", 100, "Url", 10);
 
-        var htmlParsersFactoryMock = new Mock<IHtmlParsersFactory>();
+        var htmlParsersFactoryMock = new Mock<IHtmlParsersAbstractFactory>();
         ParsersMocksCollection
             .SetupHtmlParsersFactoryWithPageParser(htmlParsersFactoryMock, searchPageParser);
         ParsersMocksCollection

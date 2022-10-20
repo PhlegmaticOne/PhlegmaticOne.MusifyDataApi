@@ -1,6 +1,7 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Core.Models;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
@@ -8,13 +9,13 @@ using PhlegmaticOne.MusifyDataApi.Models.Artists.Preview;
 using PhlegmaticOne.MusifyDataApi.Models.Composite;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
 
-namespace PhlegmaticOne.MusifyDataApi.Default;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
-public class MusifyDataSearchService : IMusifyDataSearchService
+public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
 {
-    private readonly IHtmlParsersFactory _htmlParsersFactory;
+    private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyDataSearchService(IHtmlParsersFactory htmlParsersFactory) => 
+    public MusifyDataSearchService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<SearchResult<ArtistPreviewDtoBase>>> SearchArtistsAsync(string searchText, 
@@ -31,7 +32,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService
         int releasesCountToSelect = 20, bool includeCovers = false)
     {
         var searchUrl = MusifyUrl.BuildSearchUrl(searchText).ToStringUrl();
-        var searchPageParser = await _htmlParsersFactory.GetPageParserAsync<ISearchPageParser>(searchUrl);
+        var searchPageParser = await _htmlParsersFactory.CreatePageParserAsync<ISearchPageParser>(searchUrl);
 
         var result = new SearchResult<ReleaseSearchPreviewDto>()
         {
@@ -40,7 +41,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService
 
         foreach (var htmlItem in searchPageParser.GetReleaseHtmlItems(releasesCountToSelect))
         {
-            var releasePreviewParser = _htmlParsersFactory.GetDataParser<ISearchReleaseDataParser>(htmlItem);
+            var releasePreviewParser = _htmlParsersFactory.CreateDataParser<ISearchReleaseDataParser>(htmlItem);
 
             var artist = new ReleaseSearchPreviewDto
             {
@@ -62,7 +63,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService
         int artistsCountToSelect = 5, bool includeCovers = false)
     {
         var searchUrl = MusifyUrl.BuildSearchUrl(searchText).ToStringUrl();
-        var searchPageParser = await _htmlParsersFactory.GetPageParserAsync<ISearchPageParser>(searchUrl);
+        var searchPageParser = await _htmlParsersFactory.CreatePageParserAsync<ISearchPageParser>(searchUrl);
 
         var result = new SearchResult<ArtistPreviewDtoBase>()
         {
@@ -71,7 +72,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService
 
         foreach (var htmlItem in searchPageParser.GetArtistHtmlItems(artistsCountToSelect))
         {
-            var artistPreviewParser = _htmlParsersFactory.GetDataParser<ISearchArtistDataParser>(htmlItem);
+            var artistPreviewParser = _htmlParsersFactory.CreateDataParser<ISearchArtistDataParser>(htmlItem);
 
             var artist = new ArtistPreviewDtoBase
             {

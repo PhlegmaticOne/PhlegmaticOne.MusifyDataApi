@@ -7,4 +7,5 @@ public class PagedListDto<TItem>
 {
     public List<TItem> Items { get; set; } = null!;
     public int PageIndex { get; set; }
+    public override string ToString() => $"Items count: {Items.Count}. Page Index: {PageIndex}";
 }

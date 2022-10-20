@@ -1,17 +1,18 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
-namespace PhlegmaticOne.MusifyDataApi.Default;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
-public class MusifyReleasesDataService : IMusifyReleasesDataService
+public class MusifyReleasesDataService : IMusifyReleasesDataService, IUseHtmlParsers
 {
-    private readonly IHtmlParsersFactory _htmlParsersFactory;
+    private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyReleasesDataService(IHtmlParsersFactory htmlParsersFactory) => 
+    public MusifyReleasesDataService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ReleaseInfoDto>> GetReleaseInfoAsync(string url, bool includeCover = false) =>
@@ -25,7 +26,7 @@ public class MusifyReleasesDataService : IMusifyReleasesDataService
     private async Task<ReleaseInfoDto> GetReleaseInfoAsyncPrivate(string url,
         bool includeCover = false)
     {
-        var releaseParser = await _htmlParsersFactory.GetPageParserAsync<IReleasePageParser>(url);
+        var releaseParser = await _htmlParsersFactory.CreatePageParserAsync<IReleasePageParser>(url);
 
         var result = new ReleaseInfoDto();
 
@@ -37,7 +38,7 @@ public class MusifyReleasesDataService : IMusifyReleasesDataService
     private async Task<ReleaseDataDto<TrackInfoDto>> GetReleaseWithTracksInfoAsyncPrivate(string url,
         bool includeCover = false)
     {
-        var releaseParser = await _htmlParsersFactory.GetPageParserAsync<IReleasePageParser>(url);
+        var releaseParser = await _htmlParsersFactory.CreatePageParserAsync<IReleasePageParser>(url);
         var result = new ReleaseDataDto<TrackInfoDto>();
         await InitializeRelease(result, releaseParser, url, includeCover);
 

@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
 namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
 
@@ -21,7 +22,7 @@ public class MusifyArtistsDataServiceTests
             .GetPreviewReleaseDataParser("Title", 2000, "url", 10,
                 new List<string>() { "Artist" }, new List<string>() { "Genre" });
 
-        var htmlParsersFactoryMock = new Mock<IHtmlParsersFactory>();
+        var htmlParsersFactoryMock = new Mock<IHtmlParsersAbstractFactory>();
 
         ParsersMocksCollection
             .SetupHtmlParsersFactoryWithPageParser(htmlParsersFactoryMock, artistPreviewReleasesPageParserMock);

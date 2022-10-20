@@ -4,7 +4,7 @@ using PhlegmaticOne.MusifyDataApi.Core.Extensions;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 
-public abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBase<IHtmlDivElement>
+internal abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBase<IHtmlDivElement>
 {
     private readonly IMusifyDataDownloadService _musifyDataDownloadService;
 

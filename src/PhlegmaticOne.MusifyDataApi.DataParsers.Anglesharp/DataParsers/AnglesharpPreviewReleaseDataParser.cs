@@ -4,13 +4,14 @@ using PhlegmaticOne.MusifyDataApi.Core.Extensions;
 using PhlegmaticOne.MusifyDataApi.Core.Models;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
 
-public class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHtmlDivElement>, IPreviewReleaseDataParser
+internal class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHtmlDivElement>, IPreviewReleaseDataParser
 {
     private readonly IMusifyDataDownloadService _musifyDataDownloadService;
 
@@ -59,7 +60,7 @@ public class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHtml
     public string GetTitle()
     {
         var nameAnchor = HtmlElement.QuerySelector("h4.card-subtitle")!.FirstElementChild!;
-        return nameAnchor.InnerHtml.Replace("&amp;", "&").Trim();
+        return HtmlStringCleaner.ClearString(nameAnchor.InnerHtml);
     }
 
     public YearDtoBase GetYear()

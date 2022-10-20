@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
-using PhlegmaticOne.MusifyDataApi.DataDownload.Core;
-using PhlegmaticOne.MusifyDataApi.DataDownload.Http;
 using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 using PhlegmaticOne.MusifyDataApi.Html.Parsers.Http;
 

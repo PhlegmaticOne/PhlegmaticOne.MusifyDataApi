@@ -6,7 +6,7 @@ using PhlegmaticOne.MusifyDataApi.Models.Enums;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
-public class AnglesharpArtistPreviewReleasesPageParser : AnglesharpPreviewReleasesPageParser,
+internal class AnglesharpArtistPreviewReleasesPageParser : AnglesharpPreviewReleasesPageParser,
     IArtistPreviewReleasesPageParser
 {
     public AnglesharpArtistPreviewReleasesPageParser(IHtmlStringGetter htmlStringGetter) : base(htmlStringGetter) { }

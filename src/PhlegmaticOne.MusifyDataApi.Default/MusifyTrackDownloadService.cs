@@ -1,11 +1,12 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
-namespace PhlegmaticOne.MusifyDataApi.Default;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
-public class MusifyTrackDownloadService : IMusifyTrackDownloadService
+public class MusifyTrackDownloadService : IMusifyTrackDownloadService, IUseHtmlParsers
 {
     private readonly IMusifyDataDownloadService _dataDownloadService;
 

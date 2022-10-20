@@ -1,14 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PhlegmaticOne.MusifyDataApi.Default;
 using PhlegmaticOne.MusifyDataApi.Extensions.Configurations;
-using PhlegmaticOne.MusifyDataApi.Extensions.Factories;
-using PhlegmaticOne.MusifyDataApi.Extensions.FactoryHelpers;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Extensions.Configurations.ImplementationConfigurations;
 
 namespace PhlegmaticOne.MusifyDataApi.Extensions;
 
@@ -19,47 +11,18 @@ public class MusifyDataApiBuilder
     public MusifyDataApiBuilder(IServiceCollection serviceCollection) => 
         _serviceCollection = serviceCollection;
 
-    public void UseDefaultImplementationWithParsers()
+    public void ConfigureImplementationWithParsers(
+        Action<HtmlParsersAbstractFactoryConfiguration> htmlParsersAbstractFactoryConfigurationAction)
     {
-        UseImplementationWithCustomParsers(b =>
-        {
-            b.AddPageParser<IArtistPageParser, AnglesharpArtistPageParser>()
-             .AddPageParser<IArtistPreviewReleasesPageParser, AnglesharpArtistPreviewReleasesPageParser>()
-             .AddPageParser<IPreviewReleasesPageParser, AnglesharpPreviewReleasesPageParser>()
-             .AddPageParser<IReleasePageParser, AnglesharpReleasePageParser>()
-             .AddPageParser<ISearchPageParser, AnglesharpSearchPageParser>();
-        },
-            b =>
-        {
-            b.AddDataParser<IPreviewReleaseDataParser, AnglesharpPreviewReleaseDataParser>()
-             .AddDataParser<ISearchArtistDataParser, AnglesharpSearchArtistDataParser>()
-             .AddDataParser<ISearchReleaseDataParser, AnglesharpSearchReleaseDataParser>();
-        });
+        var htmlParsersAbstractFactoryConfiguration = 
+            new HtmlParsersAbstractFactoryConfiguration(_serviceCollection);
+
+        htmlParsersAbstractFactoryConfigurationAction(htmlParsersAbstractFactoryConfiguration);
     }
 
-    public void UseImplementationWithCustomParsers(Action<HtmlPageParsersConfiguration> pageParsersBuilderAction,
-        Action<HtmlDataParsersConfiguration> dataParsersBuilderAction)
+    public void ConfigureCustomApiRealizations(Action<DefaultMusifyImplementationConfiguration> dataConfigurationBuilderAction)
     {
-        var dataParsersConfiguration = new HtmlDataParsersConfiguration(_serviceCollection);
-        var pageParsersConfiguration = new HtmlPageParsersConfiguration(_serviceCollection);
-
-        pageParsersBuilderAction(pageParsersConfiguration);
-        dataParsersBuilderAction(dataParsersConfiguration);
-
-        ConfigureApiRealizations(b =>
-        {
-            b.UseArtistsDataService<MusifyArtistsDataService>();
-            b.UseDataSearchService<MusifyDataSearchService>();
-            b.UseDownloadTrackService<MusifyTrackDownloadService>();
-            b.UseReleasesDataService<MusifyReleasesDataService>();
-        });
-
-        AddParsersFactory();
-    }
-
-    public void ConfigureApiRealizations(Action<MusifyDataApiConfiguration> dataConfigurationBuilderAction)
-    {
-        var musifyDataApiConfiguration = new MusifyDataApiConfiguration(_serviceCollection);
+        var musifyDataApiConfiguration = new DefaultMusifyImplementationConfiguration(_serviceCollection);
         dataConfigurationBuilderAction(musifyDataApiConfiguration);
     }
 
@@ -74,15 +37,5 @@ public class MusifyDataApiBuilder
     {
         var configuration = new HtmlStringGetterConfiguration(_serviceCollection);
         htmlStringGetterBuilderAction(configuration);
-    }
-
-    private void AddParsersFactory()
-    {
-        _serviceCollection.AddSingleton<IHtmlParsersFactory, DiHtmlParsersFactory>(x =>
-        {
-            var dataParserFactories = x.GetServices<IFactory<IHtmlDataParserBase>>();
-            var pageParserFactories = x.GetServices<IFactory<IHtmlPageParserBase>>();
-            return new DiHtmlParsersFactory(pageParserFactories, dataParserFactories);
-        });
     }
 }

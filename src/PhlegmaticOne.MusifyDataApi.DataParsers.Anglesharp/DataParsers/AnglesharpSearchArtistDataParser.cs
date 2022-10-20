@@ -4,7 +4,7 @@ using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
 
-public class AnglesharpSearchArtistDataParser : AnglesharpSearchDataParserBase, ISearchArtistDataParser
+internal class AnglesharpSearchArtistDataParser : AnglesharpSearchDataParserBase, ISearchArtistDataParser
 {
     protected override string CoverDivName => "contacts__img";
     public AnglesharpSearchArtistDataParser(IMusifyDataDownloadService musifyDataDownloadService) : base(musifyDataDownloadService)

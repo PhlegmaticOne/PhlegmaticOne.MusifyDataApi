@@ -4,7 +4,7 @@ using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 
 namespace PhlegmaticOne.MusifyDataApi.Extensions.Factories;
 
-public class DiHtmlParsersFactory : IHtmlParsersFactory
+internal class DiHtmlParsersFactory : IHtmlParsersAbstractFactory
 {
     private readonly List<IFactory<IHtmlPageParserBase>> _pageParsers;
     private readonly List<IFactory<IHtmlDataParserBase>> _dataParsers;
@@ -16,7 +16,9 @@ public class DiHtmlParsersFactory : IHtmlParsersFactory
         _dataParsers = dataParsers.ToList();
     }
 
-    public async Task<TParser> GetPageParserAsync<TParser>(string url) where TParser : IHtmlPageParserBase
+    public void InitializeFactories() { }
+
+    public async Task<TParser> CreatePageParserAsync<TParser>(string url) where TParser : IHtmlPageParserBase
     {
         var parser = _pageParsers
             .First(x => x.TType == typeof(TParser))
@@ -26,7 +28,7 @@ public class DiHtmlParsersFactory : IHtmlParsersFactory
         return (TParser)parser;
     }
 
-    public TParser GetDataParser<TParser>(object htmlElement) where TParser : IHtmlDataParserBase
+    public TParser CreateDataParser<TParser>(object htmlElement) where TParser : IHtmlDataParserBase
     {
         var dataParser = _dataParsers
             .First(x => x.TType == typeof(TParser))

@@ -1,6 +1,7 @@
 ﻿using Moq;
 using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 
 namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
@@ -16,7 +17,7 @@ public class MusifyReleasesDataServiceTests
                 new List<string> { "Genre1", "Genre2" },
                 new List<(string, string)> { ("Track1", "Artist1"), ("Track2", "Artist2") });
 
-        var htmlParsersFactoryMock = new Mock<IHtmlParsersFactory>();
+        var htmlParsersFactoryMock = new Mock<IHtmlParsersAbstractFactory>();
         ParsersMocksCollection
             .SetupHtmlParsersFactoryWithPageParser(htmlParsersFactoryMock, releasePageParser);
 

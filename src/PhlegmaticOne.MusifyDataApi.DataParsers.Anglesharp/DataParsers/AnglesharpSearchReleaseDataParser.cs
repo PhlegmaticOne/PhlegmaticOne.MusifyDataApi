@@ -3,10 +3,13 @@ using PhlegmaticOne.MusifyDataApi.Core.Models;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
+using System.Text.RegularExpressions;
+using System;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
 
-public class AnglesharpSearchReleaseDataParser : AnglesharpSearchDataParserBase, ISearchReleaseDataParser
+internal class AnglesharpSearchReleaseDataParser : AnglesharpSearchDataParserBase, ISearchReleaseDataParser
 {
     protected override string CoverDivName => "contacts__img.release";
     public AnglesharpSearchReleaseDataParser(IMusifyDataDownloadService musifyDataDownloadService) : base(musifyDataDownloadService)
@@ -15,13 +18,14 @@ public class AnglesharpSearchReleaseDataParser : AnglesharpSearchDataParserBase,
     public string GetArtistName()
     {
         var infoDiv = GetInfoDiv();
-        return infoDiv.Children[1].InnerHtml.Trim('\n', ' ');
+        var artistName = infoDiv.Children[1].InnerHtml;
+        return HtmlStringCleaner.ClearString(Regex.Replace(artistName, @"\s+", " "));
     }
 
     public string GetTitle()
     {
         var infoDiv = GetInfoDiv();
-        return infoDiv.Children[0].InnerHtml[..^7].Trim();
+        return HtmlStringCleaner.ClearString(infoDiv.Children[0].InnerHtml[..^7]);
     }
     public YearDtoBase GetYear()
     {

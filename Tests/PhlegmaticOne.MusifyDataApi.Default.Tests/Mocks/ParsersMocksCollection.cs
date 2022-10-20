@@ -14,19 +14,19 @@ namespace PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 
 public class ParsersMocksCollection
 {
-    public static void SetupHtmlParsersFactoryWithPageParser<T>(Mock<IHtmlParsersFactory> htmlParsersFactoryMock, 
+    public static void SetupHtmlParsersFactoryWithPageParser<T>(Mock<IHtmlParsersAbstractFactory> htmlParsersFactoryMock, 
         T pageParser) where T : IHtmlPageParserBase
     {
         htmlParsersFactoryMock
-            .Setup(x => x.GetPageParserAsync<T>(It.IsAny<string>()))
+            .Setup(x => x.CreatePageParserAsync<T>(It.IsAny<string>()))
             .ReturnsAsync(pageParser);
     }
 
-    public static void SetupHtmlParsersFactoryWithDataParser<T>(Mock<IHtmlParsersFactory> htmlParsersFactoryMock,
+    public static void SetupHtmlParsersFactoryWithDataParser<T>(Mock<IHtmlParsersAbstractFactory> htmlParsersFactoryMock,
         T dataParser) where T : IHtmlDataParserBase
     {
         htmlParsersFactoryMock
-            .Setup(x => x.GetDataParser<T>(It.IsAny<object>()))
+            .Setup(x => x.CreateDataParser<T>(It.IsAny<object>()))
             .Returns(dataParser);
     }
 

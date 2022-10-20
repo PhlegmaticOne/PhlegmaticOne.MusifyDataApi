@@ -1,5 +1,6 @@
 ﻿using Moq;
 using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
