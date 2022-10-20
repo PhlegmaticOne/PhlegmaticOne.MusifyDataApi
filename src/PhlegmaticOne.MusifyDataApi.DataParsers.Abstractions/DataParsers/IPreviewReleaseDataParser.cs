@@ -1,9 +1,9 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 
 public interface IPreviewReleaseDataParser : IHtmlDataParserBase
 {

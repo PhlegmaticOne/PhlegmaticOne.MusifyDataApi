@@ -14,7 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Core\PhlegmaticOne.MusifyDataApi.Core.csproj" />
     <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataDownload.Core\PhlegmaticOne.MusifyDataApi.DataDownload.Core.csproj" />
-    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.csproj" />
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.csproj" />
     <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Models.Categories\PhlegmaticOne.MusifyDataApi.Models.Categories.csproj" />
     <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Models\PhlegmaticOne.MusifyDataApi.Models.csproj" />
   </ItemGroup>

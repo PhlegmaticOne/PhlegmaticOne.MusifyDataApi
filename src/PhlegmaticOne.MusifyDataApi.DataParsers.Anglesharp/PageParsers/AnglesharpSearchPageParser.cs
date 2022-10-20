@@ -1,10 +1,13 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers.Base;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
 public class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPageParser
 {
+    public AnglesharpSearchPageParser(IHtmlStringGetter htmlStringGetter) : base(htmlStringGetter) { }
+
     public IEnumerable<object> GetArtistHtmlItems(int count = 5) =>
         GetSearchItems(0, count);
 
@@ -22,8 +25,9 @@ public class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPageP
 
         var htmlElements =  elements[index]
             .Children!
-            .Select(x => x.FirstElementChild)!;
+            .Select(x => x.FirstElementChild)!
+            .ToList();
 
-        return count > elements.Count ? elements! : (IEnumerable<object>)elements.Take(count);
+        return count > htmlElements.Count ? htmlElements! : (IEnumerable<object>)htmlElements.Take(count);
     }
 }

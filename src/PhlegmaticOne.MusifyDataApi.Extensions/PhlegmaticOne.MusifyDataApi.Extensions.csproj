@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataDownload.Http\PhlegmaticOne.MusifyDataApi.DataDownload.Http.csproj" />
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.csproj" />
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.csproj" />
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Default.csproj" />
+    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.csproj" />
+  </ItemGroup>
+
+</Project>

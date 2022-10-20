@@ -9,7 +9,7 @@ namespace PhlegmaticOne.MusifyDataApi.Core;
 public interface IMusifyArtistsDataService
 {
     Task<OperationResult<ArtistInfoDto>> GetArtistInfoAsync(string url, bool includeCover = false);
-    Task<OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>> GetArtistWithReleases(string url,
+    Task<OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>> GetArtistWithReleasesAsync(string url,
         bool includeArtistCover = false, bool includeReleaseCovers = false,
         SelectionType selectionType = SelectionType.Include,
         IEnumerable<MusifyReleaseType>? releaseTypes = null);

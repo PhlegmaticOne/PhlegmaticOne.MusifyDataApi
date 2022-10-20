@@ -1,6 +1,6 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 
 public interface ISearchArtistDataParser : IHtmlDataParserBase
 {

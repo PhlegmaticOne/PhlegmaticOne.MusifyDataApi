@@ -1,23 +1,31 @@
-﻿using PhlegmaticOne.MusifyDataApi.Core.Extensions;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.Downloads;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Core.Extensions;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers.Base;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
 public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePageParser
 {
+    private readonly IMusifyDataDownloadService _musifyDataDownloadService;
+
+    public AnglesharpReleasePageParser(IHtmlStringGetter htmlStringGetter,
+        IMusifyDataDownloadService musifyDataDownloadService) : base(htmlStringGetter)
+    {
+        _musifyDataDownloadService = musifyDataDownloadService;
+    }
     public string GetTitle()
     {
         static string ReturnTitle(string titleInfo)
         {
-            var splitted = titleInfo.Split(new[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
-            return splitted[0].Trim();
+            var split = titleInfo.Split(new[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+            return split[0].Trim();
         }
 
         var header = HtmlDocument
@@ -80,7 +88,8 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
            .Children;
 
         var names = genreElements.Select(x => x.InnerHtml.Trim('#'));
-        var links = genreElements.Select(x => x.GetAttribute("href")!.WrapWithMusifySiteAddress());
+        var links = genreElements.Select(x => 
+            x.GetAttribute("href")!.AsMusifyUrl().ToStringUrl());
 
         return names.Zip(links).Select(x => new GenreDto
         {
@@ -95,7 +104,7 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
 
         var image = HtmlDocument.QuerySelector("img.album-img.lozad")!;
         var imageUrlPart = image.Attributes.First(s => s.Name == "data-src").Value;
-        return await MusifyImageDownloader.DownloadImageAsync(imageUrlPart);
+        return await _musifyDataDownloadService.DownloadAsync(imageUrlPart.AsMusifyUrl().ToStringUrl());
     }
 
     public IEnumerable<TrackInfoDto> GetTracks()
@@ -125,7 +134,7 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
                 if (existingArtist is null)
                 {
                     var artistLink = songArtistLinks
-                        .Select(x => x.GetAttribute("href")!.WrapWithMusifySiteAddress())
+                        .Select(x => x.GetAttribute("href")!.AsMusifyUrl().ToStringUrl())
                         .ElementAt(current);
 
                     var newArtist = new ArtistDtoBase
@@ -149,7 +158,7 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
 
             var songName = songInfo.InnerHtml.Replace("&amp;", "&");
 
-            var songLink = songInfo.GetAttribute("href")!.WrapWithMusifySiteAddress();
+            var songLink = songInfo.GetAttribute("href")!.AsMusifyUrl().ToStringUrl();
 
             var duration = trackElement.QuerySelectorAll("div")
                 .Where(d => d.ClassName == "track__details hidden-xs-down" && d.FirstElementChild?.ClassName == "text-muted")
@@ -158,7 +167,7 @@ public class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleasePag
 
             var downloadUrl = trackElement.QuerySelectorAll("a")
                 .Where(p => p.HasAttribute("download"))
-                .Select(x => x.GetAttribute("href")!.WrapWithMusifySiteAddress())
+                .Select(x => x.GetAttribute("href")!.AsMusifyUrl().ToStringUrl())
                 .FirstOrDefault();
 
             var track = new TrackInfoDto

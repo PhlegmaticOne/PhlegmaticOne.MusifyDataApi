@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Html.Dom;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.Base;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers.Base;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 
 public abstract class AnglesharpDataParserBase<TElement> : IHtmlDataParserBase
     where TElement : IHtmlElement

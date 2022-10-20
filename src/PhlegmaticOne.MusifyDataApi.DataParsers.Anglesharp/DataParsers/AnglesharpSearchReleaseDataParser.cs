@@ -1,14 +1,17 @@
-﻿using PhlegmaticOne.MusifyDataApi.Core.Extensions;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Core.Models;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
 
 public class AnglesharpSearchReleaseDataParser : AnglesharpSearchDataParserBase, ISearchReleaseDataParser
 {
     protected override string CoverDivName => "contacts__img.release";
-
+    public AnglesharpSearchReleaseDataParser(IMusifyDataDownloadService musifyDataDownloadService) : base(musifyDataDownloadService)
+    {
+    }
     public string GetArtistName()
     {
         var infoDiv = GetInfoDiv();
@@ -28,7 +31,7 @@ public class AnglesharpSearchReleaseDataParser : AnglesharpSearchDataParserBase,
         return new()
         {
             YearReleased = year,
-            Url = year.ToYearUrl()
+            Url = MusifyUrl.BuildYearUrl(year).ToStringUrl()
         };
     }
 

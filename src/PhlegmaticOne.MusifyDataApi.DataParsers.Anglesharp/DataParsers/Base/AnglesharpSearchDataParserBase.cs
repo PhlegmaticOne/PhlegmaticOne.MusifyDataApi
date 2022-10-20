@@ -1,11 +1,15 @@
 ﻿using AngleSharp.Html.Dom;
+using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.Core.Extensions;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.Downloads;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.DataParsers.Base;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 
 public abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBase<IHtmlDivElement>
 {
+    private readonly IMusifyDataDownloadService _musifyDataDownloadService;
+
+    protected AnglesharpSearchDataParserBase(IMusifyDataDownloadService musifyDataDownloadService) => 
+        _musifyDataDownloadService = musifyDataDownloadService;
     protected abstract string CoverDivName { get; }
     protected async Task<byte[]> GetCoverAsyncCommon(bool includeCover)
     {
@@ -14,7 +18,7 @@ public abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBase<
         var coverDiv = HtmlElement.QuerySelector("div." + CoverDivName)!;
         var imageElement = coverDiv.QuerySelector("img")!;
         var imageUrl = imageElement.GetAttribute("data-src")!;
-        return await MusifyImageDownloader.DownloadImageAsync(imageUrl);
+        return await _musifyDataDownloadService.DownloadAsync(imageUrl.AsMusifyUrl().ToStringUrl());
     }
     protected int GetTracksCountCommon()
     {
@@ -26,7 +30,7 @@ public abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBase<
     protected string GetUrlCommon()
     {
         var anchor = HtmlElement.QuerySelector("a")!;
-        return anchor.GetAttribute("href")!.WrapWithMusifySiteAddress();
+        return anchor.GetAttribute("href")!.AsMusifyUrl().ToStringUrl();
     }
 
     protected IHtmlDivElement GetInfoDiv() => (IHtmlDivElement)HtmlElement.QuerySelector("div.contacts__info")!;

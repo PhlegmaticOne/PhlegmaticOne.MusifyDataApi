@@ -1,9 +1,9 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
-using PhlegmaticOne.MusifyDataApi.Core.Extensions;
+using PhlegmaticOne.MusifyDataApi.Core.Models;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.DataParsers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.Factories;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Preview;
 using PhlegmaticOne.MusifyDataApi.Models.Composite;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
@@ -14,43 +14,23 @@ public class MusifyDataSearchService : IMusifyDataSearchService
 {
     private readonly IHtmlParsersFactory _htmlParsersFactory;
 
-    public MusifyDataSearchService(IHtmlParsersFactory htmlParsersFactory)
-    {
+    public MusifyDataSearchService(IHtmlParsersFactory htmlParsersFactory) => 
         _htmlParsersFactory = htmlParsersFactory;
-    }
+
     public async Task<OperationResult<SearchResult<ArtistPreviewDtoBase>>> SearchArtistsAsync(string searchText, 
-        int artistsCountToSelect = 5, bool includeCovers = false)
-    {
-        var searchUrl = searchText.ToSearchUrl();
-        var searchPageParser = await _htmlParsersFactory.GetPageParserAsync<ISearchPageParser>(searchUrl);
-
-        var result = new SearchResult<ArtistPreviewDtoBase>()
-        {
-            Items = new List<ArtistPreviewDtoBase>()
-        };
-
-        foreach (var htmlItem in searchPageParser.GetArtistHtmlItems(artistsCountToSelect))
-        {
-            var artistPreviewParser = _htmlParsersFactory.GetDataParser<ISearchArtistDataParser>(htmlItem);
-
-            var artist = new ArtistPreviewDtoBase
-            {
-                CoverData = await artistPreviewParser.GetCoverAsync(includeCovers),
-                Name = artistPreviewParser.GetName(),
-                TracksCount = artistPreviewParser.GetTracksCount(),
-                Url = artistPreviewParser.GetUrl()
-            };
-
-            result.Items.Add(artist);
-        }
-
-        return OperationResult<SearchResult<ArtistPreviewDtoBase>>.FromSuccess(result);
-    }
+        int artistsCountToSelect = 5, bool includeCovers = false) =>
+        await OperationResult<SearchResult<ArtistPreviewDtoBase>>.FromActionResult(() =>
+            SearchArtistsAsyncPrivate(searchText, artistsCountToSelect, includeCovers));
 
     public async Task<OperationResult<SearchResult<ReleaseSearchPreviewDto>>> SearchReleasesAsync(string searchText, 
+        int releasesCountToSelect = 20, bool includeCovers = false) =>
+        await OperationResult<SearchResult<ReleaseSearchPreviewDto>>.FromActionResult(() =>
+            SearchReleasesAsyncPrivate(searchText, releasesCountToSelect, includeCovers));
+
+    private async Task<SearchResult<ReleaseSearchPreviewDto>> SearchReleasesAsyncPrivate(string searchText,
         int releasesCountToSelect = 20, bool includeCovers = false)
     {
-        var searchUrl = searchText.ToSearchUrl();
+        var searchUrl = MusifyUrl.BuildSearchUrl(searchText).ToStringUrl();
         var searchPageParser = await _htmlParsersFactory.GetPageParserAsync<ISearchPageParser>(searchUrl);
 
         var result = new SearchResult<ReleaseSearchPreviewDto>()
@@ -75,6 +55,35 @@ public class MusifyDataSearchService : IMusifyDataSearchService
             result.Items.Add(artist);
         }
 
-        return OperationResult<SearchResult<ReleaseSearchPreviewDto>>.FromSuccess(result);
+        return result;
+    }
+
+    private async Task<SearchResult<ArtistPreviewDtoBase>> SearchArtistsAsyncPrivate(string searchText,
+        int artistsCountToSelect = 5, bool includeCovers = false)
+    {
+        var searchUrl = MusifyUrl.BuildSearchUrl(searchText).ToStringUrl();
+        var searchPageParser = await _htmlParsersFactory.GetPageParserAsync<ISearchPageParser>(searchUrl);
+
+        var result = new SearchResult<ArtistPreviewDtoBase>()
+        {
+            Items = new List<ArtistPreviewDtoBase>()
+        };
+
+        foreach (var htmlItem in searchPageParser.GetArtistHtmlItems(artistsCountToSelect))
+        {
+            var artistPreviewParser = _htmlParsersFactory.GetDataParser<ISearchArtistDataParser>(htmlItem);
+
+            var artist = new ArtistPreviewDtoBase
+            {
+                CoverData = await artistPreviewParser.GetCoverAsync(includeCovers),
+                Name = artistPreviewParser.GetName(),
+                TracksCount = artistPreviewParser.GetTracksCount(),
+                Url = artistPreviewParser.GetUrl()
+            };
+
+            result.Items.Add(artist);
+        }
+
+        return result;
     }
 }

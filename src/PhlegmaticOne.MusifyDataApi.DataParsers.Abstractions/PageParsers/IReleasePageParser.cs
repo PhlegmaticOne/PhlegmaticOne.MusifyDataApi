@@ -1,10 +1,10 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 
 public interface IReleasePageParser : IHtmlPageParserBase
 {

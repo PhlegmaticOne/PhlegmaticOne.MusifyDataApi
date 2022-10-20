@@ -16,11 +16,12 @@ public class OperationResult<T> where T : class
     public static OperationResult<T> FromSuccess(T data) =>
         new(data, true);
 
-    public static async Task<OperationResult<T>> FromActionResult(Func<Task<OperationResult<T>>> operation)
+    public static async Task<OperationResult<T>> FromActionResult(Func<Task<T>> operation)
     {
         try
         {
-            return await operation();
+            var result = await operation();
+            return FromSuccess(result);
         }
         catch (Exception ex)
         {

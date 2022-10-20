@@ -1,11 +1,19 @@
-﻿using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.Downloads;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Core.Extensions;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers.Base;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
 public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageParser
 {
+    private readonly IMusifyDataDownloadService _musifyDataDownloadService;
+    public AnglesharpArtistPageParser(IHtmlStringGetter htmlStringGetter,
+        IMusifyDataDownloadService musifyDataDownloadService) : base(htmlStringGetter)
+    {
+        _musifyDataDownloadService = musifyDataDownloadService;
+    }
     public string GetCountry()
     {
         var artistInfo = HtmlDocument.QuerySelector("ul.icon-list")!
@@ -24,7 +32,7 @@ public class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPageP
 
         var image = HtmlDocument.QuerySelector("img.artist-img")!;
         var imageUrlPart = image.Attributes.First(s => s.Name == "src").Value;
-        return await MusifyImageDownloader.DownloadImageAsync(imageUrlPart);
+        return await _musifyDataDownloadService.DownloadAsync(imageUrlPart.AsMusifyUrl().ToStringUrl());
     }
 
     public string GetName() => HtmlDocument.QuerySelector("li.breadcrumb-item.active")!

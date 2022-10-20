@@ -1,13 +1,15 @@
 ﻿using AngleSharp.Html.Dom;
 using PhlegmaticOne.MusifyDataApi.Core.Helpers;
-using PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
+using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 
-namespace PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.PageParsers;
+namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
 
 public class AnglesharpArtistPreviewReleasesPageParser : AnglesharpPreviewReleasesPageParser,
     IArtistPreviewReleasesPageParser
 {
+    public AnglesharpArtistPreviewReleasesPageParser(IHtmlStringGetter htmlStringGetter) : base(htmlStringGetter) { }
     public IEnumerable<object> GetReleaseHtmlItems(SelectionType selectionType = SelectionType.Include,
         IEnumerable<MusifyReleaseType>? releaseTypes = null)
     {

@@ -7,17 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B77BC8C4-896
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{90804C87-BEB3-43F4-AB32-3A512C69FD78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Tests\PhlegmaticOne.MusifyDataApi.Tests.csproj", "{8FBBD569-8374-4021-BFCA-C9936DE14D6B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Core", "src\PhlegmaticOne.MusifyDataApi.Core\PhlegmaticOne.MusifyDataApi.Core.csproj", "{4F6C0E81-9ED6-40AD-9339-5B3630D5FACE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.DataDownload.Core", "src\PhlegmaticOne.MusifyDataApi.DataDownload.Core\PhlegmaticOne.MusifyDataApi.DataDownload.Core.csproj", "{CA8B8985-BDAD-4228-A6AF-DDCDB0C2598F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.DataDownload.Http", "src\PhlegmaticOne.MusifyDataApi.DataDownload.Http\PhlegmaticOne.MusifyDataApi.DataDownload.Http.csproj", "{0FBEABCD-08F1-49DF-97D9-457EA8B7EDC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions", "src\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions.csproj", "{F1DAFFBD-71C9-4B89-BC95-E196D33ABD3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions", "src\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.csproj", "{F1DAFFBD-71C9-4B89-BC95-E196D33ABD3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp", "src\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp.csproj", "{57071F1A-6AA3-42B6-8A8C-A0447459DB69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp", "src\PhlegmaticOne.MusifyDataApi.DataParsers.Anglesharp\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.csproj", "{57071F1A-6AA3-42B6-8A8C-A0447459DB69}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Default", "src\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Default.csproj", "{EF5D2085-3DF8-42F2-800F-DD776F118BB8}"
 EndProject
@@ -27,16 +25,32 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Models.Categories", "src\PhlegmaticOne.MusifyDataApi.Models.Categories\PhlegmaticOne.MusifyDataApi.Models.Categories.csproj", "{03EAC451-0731-4BCE-8235-BF1864B26126}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Extensions", "src\PhlegmaticOne.MusifyDataApi.Extensions\PhlegmaticOne.MusifyDataApi.Extensions.csproj", "{0C81A684-4C2E-4760-BF77-44C95836866A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.Parsers.Core", "src\PhlegmaticOne.MusifyDataApi.Html.Parsers.Core\PhlegmaticOne.MusifyDataApi.Html.Parsers.Core.csproj", "{C60A7DAC-A681-4A51-9FF2-06894165BB3D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.Parsers.Http", "src\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.csproj", "{FF38D294-E896-4399-A193-6B568B574FB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.DataDownload.Http.Tests", "Tests\PhlegmaticOne.MusifyDataApi.DataDownload.Http.Tests\PhlegmaticOne.MusifyDataApi.DataDownload.Http.Tests.csproj", "{440B0E8B-D221-499D-B50B-A82CD17BE105}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.Tests.csproj", "{88240076-1422-441A-BE78-C04ADB3E7D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Core.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Core.Tests\PhlegmaticOne.MusifyDataApi.Core.Tests.csproj", "{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.csproj", "{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Default.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Default.Tests\PhlegmaticOne.MusifyDataApi.Default.Tests.csproj", "{B9012A9C-143A-4A73-9B79-E28D601215AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{1A151E49-DA38-4F69-B0D3-AA7672B422E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Sample", "Sample\PhlegmaticOne.MusifyDataApi.Sample\PhlegmaticOne.MusifyDataApi.Sample.csproj", "{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FBBD569-8374-4021-BFCA-C9936DE14D6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F6C0E81-9ED6-40AD-9339-5B3630D5FACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F6C0E81-9ED6-40AD-9339-5B3630D5FACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6C0E81-9ED6-40AD-9339-5B3630D5FACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,12 +87,47 @@ Global
 		{03EAC451-0731-4BCE-8235-BF1864B26126}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03EAC451-0731-4BCE-8235-BF1864B26126}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03EAC451-0731-4BCE-8235-BF1864B26126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C81A684-4C2E-4760-BF77-44C95836866A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C81A684-4C2E-4760-BF77-44C95836866A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C81A684-4C2E-4760-BF77-44C95836866A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C81A684-4C2E-4760-BF77-44C95836866A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60A7DAC-A681-4A51-9FF2-06894165BB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60A7DAC-A681-4A51-9FF2-06894165BB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60A7DAC-A681-4A51-9FF2-06894165BB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60A7DAC-A681-4A51-9FF2-06894165BB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF38D294-E896-4399-A193-6B568B574FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF38D294-E896-4399-A193-6B568B574FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF38D294-E896-4399-A193-6B568B574FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF38D294-E896-4399-A193-6B568B574FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440B0E8B-D221-499D-B50B-A82CD17BE105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440B0E8B-D221-499D-B50B-A82CD17BE105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440B0E8B-D221-499D-B50B-A82CD17BE105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440B0E8B-D221-499D-B50B-A82CD17BE105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88240076-1422-441A-BE78-C04ADB3E7D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88240076-1422-441A-BE78-C04ADB3E7D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88240076-1422-441A-BE78-C04ADB3E7D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88240076-1422-441A-BE78-C04ADB3E7D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9012A9C-143A-4A73-9B79-E28D601215AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9012A9C-143A-4A73-9B79-E28D601215AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9012A9C-143A-4A73-9B79-E28D601215AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9012A9C-143A-4A73-9B79-E28D601215AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8FBBD569-8374-4021-BFCA-C9936DE14D6B} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
 		{4F6C0E81-9ED6-40AD-9339-5B3630D5FACE} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
 		{CA8B8985-BDAD-4228-A6AF-DDCDB0C2598F} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
 		{0FBEABCD-08F1-49DF-97D9-457EA8B7EDC9} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
@@ -88,6 +137,15 @@ Global
 		{60C6674E-F5CB-4F0A-A409-81A2F3560371} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
 		{5914AD16-D087-4EE3-BD2D-F58480109BDC} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
 		{03EAC451-0731-4BCE-8235-BF1864B26126} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{0C81A684-4C2E-4760-BF77-44C95836866A} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{C60A7DAC-A681-4A51-9FF2-06894165BB3D} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{FF38D294-E896-4399-A193-6B568B574FB3} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{440B0E8B-D221-499D-B50B-A82CD17BE105} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+		{88240076-1422-441A-BE78-C04ADB3E7D84} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+		{7826D5A4-2140-47F4-A8F7-E20B6EC1CC50} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+		{9F50D2BC-08BF-440F-B59C-D0D1C5E24E15} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+		{B9012A9C-143A-4A73-9B79-E28D601215AA} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
+		{B1E1F1AA-4F3F-4D28-9717-96DD536CE9F9} = {1A151E49-DA38-4F69-B0D3-AA7672B422E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82A85886-8500-4B7F-89BF-30F2E7363876}

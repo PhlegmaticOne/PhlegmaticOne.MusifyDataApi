@@ -1,24 +1,24 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
+using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.Core.Results;
-using PhlegmaticOne.MusifyDataApi.DataDownload.Core;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
 namespace PhlegmaticOne.MusifyDataApi.Default;
 
 public class MusifyTrackDownloadService : IMusifyTrackDownloadService
 {
-    private readonly IDataDownloadService _dataDownloadService;
+    private readonly IMusifyDataDownloadService _dataDownloadService;
 
-    public MusifyTrackDownloadService(IDataDownloadService dataDownloadService) => 
+    public MusifyTrackDownloadService(IMusifyDataDownloadService dataDownloadService) => 
         _dataDownloadService = dataDownloadService;
 
     public async Task<OperationResult<TrackDataDto>> DownloadTrackAsync(TrackInfoDto trackDto) =>
         await OperationResult<TrackDataDto>.FromActionResult(() => DownloadTrackAsyncPrivate(trackDto));
 
-    private async Task<OperationResult<TrackDataDto>> DownloadTrackAsyncPrivate(TrackInfoDto trackDto)
+    private async Task<TrackDataDto> DownloadTrackAsyncPrivate(TrackInfoDto trackDto)
     {
         var data = await _dataDownloadService.DownloadAsync(trackDto.DownloadUrl);
-        return OperationResult<TrackDataDto>.FromSuccess(new()
+        return new()
         {
             Artists = trackDto.Artists,
             DownloadUrl = trackDto.DownloadUrl,
@@ -26,6 +26,6 @@ public class MusifyTrackDownloadService : IMusifyTrackDownloadService
             Title = trackDto.Title,
             TrackData = data,
             Url = trackDto.Url
-        });
+        };
     }
 }
