@@ -1,9 +1,8 @@
 ﻿using Moq;
-using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
-using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests.Mocks;
 
-namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests;
 
 public class MusifyDataSearchServiceTests
 {
@@ -33,7 +32,7 @@ public class MusifyDataSearchServiceTests
     public async Task SearchArtistsAsync_Test()
     {
         var searchText = "paysage";
-        
+
         var result = await _musifyDataSearchService.SearchArtistsAsync(searchText);
 
         var artists = result!.Data!.Items;

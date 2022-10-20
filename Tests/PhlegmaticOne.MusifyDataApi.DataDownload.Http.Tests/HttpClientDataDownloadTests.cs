@@ -3,7 +3,7 @@ namespace PhlegmaticOne.MusifyDataApi.DataDownload.Http.Tests;
 public class HttpClientDataDownloadTests
 {
     private readonly HttpClientDataDownloadService _dataDownloadService;
-    public HttpClientDataDownloadTests() => 
+    public HttpClientDataDownloadTests() =>
         _dataDownloadService = new HttpClientDataDownloadService();
 
     [Fact]
@@ -26,7 +26,7 @@ public class HttpClientDataDownloadTests
     public async Task DownloadAsync_ShouldThrowException_InvalidUrl_Test()
     {
         const string url = "https://41s-a.musify.club/img/71/15002531/38041162";
-        await Assert.ThrowsAsync<HttpRequestException>(async () => 
+        await Assert.ThrowsAsync<HttpRequestException>(async () =>
             await _dataDownloadService.DownloadAsync(url));
     }
 }

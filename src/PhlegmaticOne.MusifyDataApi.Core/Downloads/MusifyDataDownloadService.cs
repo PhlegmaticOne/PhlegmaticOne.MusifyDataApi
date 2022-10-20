@@ -7,7 +7,7 @@ public class MusifyDataDownloadService : IMusifyDataDownloadService
 {
     private readonly IDataDownloadService _dataDownloadService;
 
-    public MusifyDataDownloadService(IDataDownloadService dataDownloadService) => 
+    public MusifyDataDownloadService(IDataDownloadService dataDownloadService) =>
         _dataDownloadService = dataDownloadService;
 
     public async Task<byte[]> DownloadAsync(string url)

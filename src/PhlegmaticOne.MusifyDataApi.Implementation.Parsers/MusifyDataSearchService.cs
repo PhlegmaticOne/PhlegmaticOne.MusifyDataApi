@@ -15,15 +15,15 @@ public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
 {
     private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyDataSearchService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
+    public MusifyDataSearchService(IHtmlParsersAbstractFactory htmlParsersFactory) =>
         _htmlParsersFactory = htmlParsersFactory;
 
-    public async Task<OperationResult<SearchResult<ArtistPreviewDtoBase>>> SearchArtistsAsync(string searchText, 
+    public async Task<OperationResult<SearchResult<ArtistPreviewDtoBase>>> SearchArtistsAsync(string searchText,
         int artistsCountToSelect = 5, bool includeCovers = false) =>
         await OperationResult<SearchResult<ArtistPreviewDtoBase>>.FromActionResult(() =>
             SearchArtistsAsyncPrivate(searchText, artistsCountToSelect, includeCovers));
 
-    public async Task<OperationResult<SearchResult<ReleaseSearchPreviewDto>>> SearchReleasesAsync(string searchText, 
+    public async Task<OperationResult<SearchResult<ReleaseSearchPreviewDto>>> SearchReleasesAsync(string searchText,
         int releasesCountToSelect = 20, bool includeCovers = false) =>
         await OperationResult<SearchResult<ReleaseSearchPreviewDto>>.FromActionResult(() =>
             SearchReleasesAsyncPrivate(searchText, releasesCountToSelect, includeCovers));

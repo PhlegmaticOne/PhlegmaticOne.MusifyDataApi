@@ -8,7 +8,7 @@ internal abstract class AnglesharpSearchDataParserBase : AnglesharpDataParserBas
 {
     private readonly IMusifyDataDownloadService _musifyDataDownloadService;
 
-    protected AnglesharpSearchDataParserBase(IMusifyDataDownloadService musifyDataDownloadService) => 
+    protected AnglesharpSearchDataParserBase(IMusifyDataDownloadService musifyDataDownloadService) =>
         _musifyDataDownloadService = musifyDataDownloadService;
     protected abstract string CoverDivName { get; }
     protected async Task<byte[]> GetCoverAsyncCommon(bool includeCover)

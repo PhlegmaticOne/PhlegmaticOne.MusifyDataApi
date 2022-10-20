@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Extensions\PhlegmaticOne.MusifyDataApi.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.csproj" />
   </ItemGroup>
 
 </Project>

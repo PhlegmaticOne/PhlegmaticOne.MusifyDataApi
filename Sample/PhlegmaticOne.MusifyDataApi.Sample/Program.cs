@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PhlegmaticOne.MusifyDataApi;
 using PhlegmaticOne.MusifyDataApi.Core;
-using PhlegmaticOne.MusifyDataApi.Extensions;
 
 var services = BuildServiceProvider();
 

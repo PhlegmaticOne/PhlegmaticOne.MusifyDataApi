@@ -2,7 +2,7 @@
 using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
 using PhlegmaticOne.MusifyDataApi.Html.Parsers.Http;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Configurations;
+namespace PhlegmaticOne.MusifyDataApi.Configurations;
 
 public class HtmlStringGetterConfiguration
 {
@@ -11,9 +11,9 @@ public class HtmlStringGetterConfiguration
     public HtmlStringGetterConfiguration(IServiceCollection serviceCollection) =>
         _serviceCollection = serviceCollection;
 
-    public void UseDefaultHtmlStringGetter() => 
+    public void UseDefaultHtmlStringGetter() =>
         _serviceCollection.AddSingleton<IHtmlStringGetter, HttpClientHtmlStringGetter>();
 
-    public void UseCustomHtmlStringGetter<T>() where T : class, IHtmlStringGetter => 
+    public void UseCustomHtmlStringGetter<T>() where T : class, IHtmlStringGetter =>
         _serviceCollection.AddSingleton<IHtmlStringGetter, T>();
 }

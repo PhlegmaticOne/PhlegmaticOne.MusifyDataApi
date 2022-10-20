@@ -27,7 +27,7 @@ public class AnglesharpPreviewReleaseParserTests
         var url = _anglesharpPreviewReleaseDataParser.GetUrl();
 
         Assert.NotEmpty(cover);
-        Assert.Collection(genres, 
+        Assert.Collection(genres,
             g => Assert.Equal("Classic Rock", g.Name),
             g => Assert.Equal("Progressive Rock", g.Name),
             g => Assert.Equal("Art Rock", g.Name));

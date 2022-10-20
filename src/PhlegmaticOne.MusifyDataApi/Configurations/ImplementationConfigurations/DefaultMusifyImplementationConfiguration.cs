@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PhlegmaticOne.MusifyDataApi.Core;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Configurations.ImplementationConfigurations;
+namespace PhlegmaticOne.MusifyDataApi.Configurations.ImplementationConfigurations;
 
 public class DefaultMusifyImplementationConfiguration
 {
@@ -10,15 +10,15 @@ public class DefaultMusifyImplementationConfiguration
     public DefaultMusifyImplementationConfiguration(IServiceCollection serviceCollection) =>
         _serviceCollection = serviceCollection;
 
-    public void UseArtistsDataService<T>() 
+    public void UseArtistsDataService<T>()
         where T : class, IMusifyArtistsDataService =>
         AddSingleton<IMusifyArtistsDataService, T>();
 
-    public void UseDataSearchService<T>() 
+    public void UseDataSearchService<T>()
         where T : class, IMusifyDataSearchService =>
         AddSingleton<IMusifyDataSearchService, T>();
 
-    public void UseReleasesDataService<T>() 
+    public void UseReleasesDataService<T>()
         where T : class, IMusifyReleasesDataService =>
         AddSingleton<IMusifyReleasesDataService, T>();
 

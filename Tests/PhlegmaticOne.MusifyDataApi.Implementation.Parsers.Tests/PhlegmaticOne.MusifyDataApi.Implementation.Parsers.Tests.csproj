@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.DataParsers.Abstractions\PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.csproj" />
-    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Default\PhlegmaticOne.MusifyDataApi.Implementation.Parsers.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Implementation.Parsers\PhlegmaticOne.MusifyDataApi.Implementation.Parsers.csproj" />
   </ItemGroup>
 
 </Project>

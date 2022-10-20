@@ -12,7 +12,7 @@ public class MusifyReleasesDataService : IMusifyReleasesDataService, IUseHtmlPar
 {
     private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyReleasesDataService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
+    public MusifyReleasesDataService(IHtmlParsersAbstractFactory htmlParsersFactory) =>
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ReleaseInfoDto>> GetReleaseInfoAsync(string url, bool includeCover = false) =>

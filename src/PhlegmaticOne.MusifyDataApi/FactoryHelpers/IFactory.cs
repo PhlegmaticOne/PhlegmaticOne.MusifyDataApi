@@ -1,4 +1,4 @@
-﻿namespace PhlegmaticOne.MusifyDataApi.Extensions.FactoryHelpers;
+﻿namespace PhlegmaticOne.MusifyDataApi.FactoryHelpers;
 
 public interface IFactory<out T> where T : class
 {

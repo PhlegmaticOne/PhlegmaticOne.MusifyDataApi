@@ -34,7 +34,7 @@ public class AnglesharpHtmlParsersAbstractFactory : IHtmlParsersAbstractFactory
                     new AnglesharpArtistPreviewReleasesPageParser(_htmlStringGetter) },
             { typeof(IPreviewReleasesPageParser), () =>
                 new AnglesharpPreviewReleasesPageParser(_htmlStringGetter) },
-            { typeof(IReleasePageParser), () => 
+            { typeof(IReleasePageParser), () =>
                 new AnglesharpReleasePageParser(_htmlStringGetter, _musifyDataDownloadService) },
             { typeof(ISearchPageParser), () =>
                     new AnglesharpSearchPageParser(_htmlStringGetter) }
@@ -44,14 +44,14 @@ public class AnglesharpHtmlParsersAbstractFactory : IHtmlParsersAbstractFactory
         {
             { typeof(IPreviewReleaseDataParser), () =>
                     new AnglesharpPreviewReleaseDataParser(_musifyDataDownloadService) },
-            { typeof(ISearchArtistDataParser), () => 
+            { typeof(ISearchArtistDataParser), () =>
                 new AnglesharpSearchArtistDataParser(_musifyDataDownloadService) },
-            { typeof(ISearchReleaseDataParser), () => 
+            { typeof(ISearchReleaseDataParser), () =>
                 new AnglesharpSearchReleaseDataParser(_musifyDataDownloadService) }
         };
     }
 
-    public async Task<TParser> CreatePageParserAsync<TParser>(string url) 
+    public async Task<TParser> CreatePageParserAsync<TParser>(string url)
         where TParser : IHtmlPageParserBase
     {
         var pageParser = _pageParserFactories[typeof(TParser)]();

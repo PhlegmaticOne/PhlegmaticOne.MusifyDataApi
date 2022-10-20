@@ -23,7 +23,7 @@ internal class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPag
             return Enumerable.Empty<object>();
         }
 
-        var htmlElements =  elements[index]
+        var htmlElements = elements[index]
             .Children!
             .Select(x => x.FirstElementChild)!
             .ToList();

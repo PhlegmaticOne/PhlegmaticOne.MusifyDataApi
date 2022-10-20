@@ -85,7 +85,7 @@ internal class AnglesharpReleasePageParser : AnglesharpPageParserBase, IReleaseP
            .Children;
 
         var names = genreElements.Select(x => x.InnerHtml.Trim('#'));
-        var links = genreElements.Select(x => 
+        var links = genreElements.Select(x =>
             x.GetAttribute("href")!.AsMusifyUrl().ToStringUrl());
 
         return names.Zip(links).Select(x => new GenreDto

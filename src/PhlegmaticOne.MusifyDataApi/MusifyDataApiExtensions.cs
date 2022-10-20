@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions;
+namespace PhlegmaticOne.MusifyDataApi;
 
 public static class MusifyDataApiExtensions
 {

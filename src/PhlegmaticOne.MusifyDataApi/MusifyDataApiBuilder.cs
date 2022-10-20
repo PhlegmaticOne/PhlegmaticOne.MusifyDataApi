@@ -1,20 +1,20 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PhlegmaticOne.MusifyDataApi.Extensions.Configurations;
-using PhlegmaticOne.MusifyDataApi.Extensions.Configurations.ImplementationConfigurations;
+using PhlegmaticOne.MusifyDataApi.Configurations;
+using PhlegmaticOne.MusifyDataApi.Configurations.ImplementationConfigurations;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions;
+namespace PhlegmaticOne.MusifyDataApi;
 
 public class MusifyDataApiBuilder
 {
     private readonly IServiceCollection _serviceCollection;
 
-    public MusifyDataApiBuilder(IServiceCollection serviceCollection) => 
+    public MusifyDataApiBuilder(IServiceCollection serviceCollection) =>
         _serviceCollection = serviceCollection;
 
     public void ConfigureImplementationWithParsers(
         Action<HtmlParsersAbstractFactoryConfiguration> htmlParsersAbstractFactoryConfigurationAction)
     {
-        var htmlParsersAbstractFactoryConfiguration = 
+        var htmlParsersAbstractFactoryConfiguration =
             new HtmlParsersAbstractFactoryConfiguration(_serviceCollection);
 
         htmlParsersAbstractFactoryConfigurationAction(htmlParsersAbstractFactoryConfiguration);

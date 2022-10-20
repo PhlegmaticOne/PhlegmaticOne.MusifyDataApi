@@ -21,7 +21,7 @@ internal class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHt
     }
     public async Task<byte[]> GetCoverAsync(bool includeCover)
     {
-        if(includeCover == false)
+        if (includeCover == false)
         {
             return Array.Empty<byte>();
         }
@@ -44,10 +44,10 @@ internal class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHt
     public IEnumerable<ArtistDtoBase> GetArtists()
     {
         var artistElementsContainer = HtmlElement.QuerySelector("h3.card-title");
-        if(artistElementsContainer is null)
+        if (artistElementsContainer is null)
         {
             return Enumerable.Empty<ArtistDtoBase>();
-        } 
+        }
         var artistElements = artistElementsContainer.Children;
         return artistElements.Select(x => new ArtistDtoBase()
         {
@@ -66,7 +66,7 @@ internal class AnglesharpPreviewReleaseDataParser : AnglesharpDataParserBase<IHt
     public YearDtoBase GetYear()
     {
         var yearElement = HtmlElement.QuerySelector("p.card-text")!;
-        var year = int.Parse(yearElement.TextContent);   
+        var year = int.Parse(yearElement.TextContent);
         return new()
         {
             Url = MusifyUrl.BuildYearUrl(year).ToStringUrl(),

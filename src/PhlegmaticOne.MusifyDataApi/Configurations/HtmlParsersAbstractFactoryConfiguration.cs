@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PhlegmaticOne.MusifyDataApi.Extensions.Configurations.ImplementationConfigurations;
-using PhlegmaticOne.MusifyDataApi.Extensions.Factories;
-using PhlegmaticOne.MusifyDataApi.Extensions.FactoryHelpers;
+using PhlegmaticOne.MusifyDataApi.Configurations.ImplementationConfigurations;
+using PhlegmaticOne.MusifyDataApi.Factories;
+using PhlegmaticOne.MusifyDataApi.FactoryHelpers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Factories;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Configurations;
+namespace PhlegmaticOne.MusifyDataApi.Configurations;
 
 public class HtmlParsersAbstractFactoryConfiguration
 {

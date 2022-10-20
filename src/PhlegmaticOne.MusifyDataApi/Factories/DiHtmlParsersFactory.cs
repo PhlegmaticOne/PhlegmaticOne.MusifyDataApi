@@ -1,15 +1,15 @@
-﻿using PhlegmaticOne.MusifyDataApi.Extensions.FactoryHelpers;
+﻿using PhlegmaticOne.MusifyDataApi.FactoryHelpers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Factories;
+namespace PhlegmaticOne.MusifyDataApi.Factories;
 
 internal class DiHtmlParsersFactory : IHtmlParsersAbstractFactory
 {
     private readonly List<IFactory<IHtmlPageParserBase>> _pageParsers;
     private readonly List<IFactory<IHtmlDataParserBase>> _dataParsers;
 
-    public DiHtmlParsersFactory(IEnumerable<IFactory<IHtmlPageParserBase>> pageParsers, 
+    public DiHtmlParsersFactory(IEnumerable<IFactory<IHtmlPageParserBase>> pageParsers,
         IEnumerable<IFactory<IHtmlDataParserBase>> dataParsers)
     {
         _pageParsers = pageParsers.ToList();

@@ -1,10 +1,9 @@
 ﻿using Moq;
 using PhlegmaticOne.MusifyDataApi.Core.Downloads;
-using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
-namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests;
 
 public class MusifyTrackDownloadServiceTests
 {
@@ -22,7 +21,7 @@ public class MusifyTrackDownloadServiceTests
         {
             Title = "Title",
             Url = "Url",
-            Artists = new List<ArtistDtoBase> { new() { Name = "Name"}},
+            Artists = new List<ArtistDtoBase> { new() { Name = "Name" } },
             DownloadUrl = "DownloadUrl",
             Duration = TimeSpan.FromMinutes(3)
         };

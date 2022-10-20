@@ -43,7 +43,7 @@ internal class AnglesharpArtistPageParser : AnglesharpPageParserBase, IArtistPag
         var tabsHtmlItem = HtmlDocument.QuerySelector("ul.nav.nav-tabs.nav-fill")!;
         var tracksTabLink = tabsHtmlItem.QuerySelector("a")!;
         var tracksCountText = tracksTabLink.InnerHtml
-            .Split(new [] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+            .Split(new[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
         var tracksCount = int.Parse(tracksCountText.ElementAt(1));
 
         return tracksCount;

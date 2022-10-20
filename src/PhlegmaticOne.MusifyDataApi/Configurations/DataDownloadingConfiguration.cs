@@ -3,13 +3,13 @@ using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.DataDownload.Core;
 using PhlegmaticOne.MusifyDataApi.DataDownload.Http;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Configurations;
+namespace PhlegmaticOne.MusifyDataApi.Configurations;
 
 public class DataDownloadingConfiguration
 {
     private readonly IServiceCollection _serviceCollection;
 
-    public DataDownloadingConfiguration(IServiceCollection serviceCollection) => 
+    public DataDownloadingConfiguration(IServiceCollection serviceCollection) =>
         _serviceCollection = serviceCollection;
 
     public void UseDefaultDataDownloadService()
@@ -24,6 +24,6 @@ public class DataDownloadingConfiguration
         AddMusifyDownloadService();
     }
 
-    private void AddMusifyDownloadService() => 
+    private void AddMusifyDownloadService() =>
         _serviceCollection.AddSingleton<IMusifyDataDownloadService, MusifyDataDownloadService>();
 }

@@ -21,7 +21,7 @@ public class AnglesharpPageParserBaseTests
     {
         const string url = "https://musify.club/artist/payaoweuthbaw";
 
-        await Assert.ThrowsAsync<HttpRequestException>(async () => 
+        await Assert.ThrowsAsync<HttpRequestException>(async () =>
             await _anglesharpPageParserBase.ParsePageAsync(url));
     }
 

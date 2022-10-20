@@ -10,7 +10,7 @@ public class MusifyTrackDownloadService : IMusifyTrackDownloadService, IUseHtmlP
 {
     private readonly IMusifyDataDownloadService _dataDownloadService;
 
-    public MusifyTrackDownloadService(IMusifyDataDownloadService dataDownloadService) => 
+    public MusifyTrackDownloadService(IMusifyDataDownloadService dataDownloadService) =>
         _dataDownloadService = dataDownloadService;
 
     public async Task<OperationResult<TrackDataDto>> DownloadTrackAsync(TrackInfoDto trackDto) =>

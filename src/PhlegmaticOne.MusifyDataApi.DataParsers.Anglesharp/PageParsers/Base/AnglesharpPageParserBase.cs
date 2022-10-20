@@ -11,7 +11,7 @@ internal abstract class AnglesharpPageParserBase : IHtmlPageParserBase
 
     protected IHtmlDocument HtmlDocument = null!;
 
-    protected AnglesharpPageParserBase(IHtmlStringGetter htmlStringGetter) => 
+    protected AnglesharpPageParserBase(IHtmlStringGetter htmlStringGetter) =>
         _htmlStringGetter = htmlStringGetter;
 
     public async Task ParsePageAsync(string url) =>

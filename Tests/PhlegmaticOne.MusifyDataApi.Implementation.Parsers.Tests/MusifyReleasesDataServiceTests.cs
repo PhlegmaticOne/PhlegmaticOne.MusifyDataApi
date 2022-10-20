@@ -1,10 +1,9 @@
 ﻿using Moq;
-using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
-using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 
-namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests;
 
 public class MusifyReleasesDataServiceTests
 {
@@ -46,7 +45,7 @@ public class MusifyReleasesDataServiceTests
         Assert.Equal(MusifyReleaseType.LP, release.ReleaseType);
         Assert.Equal(2000, release.YearReleased.YearReleased);
         Assert.Equal(10, release.CoverData.Length);
-        Assert.Collection(release.Genres, 
+        Assert.Collection(release.Genres,
             g => Assert.Equal("Genre1", g.Name),
             g => Assert.Equal("Genre2", g.Name));
         Assert.Collection(release.Tracks,

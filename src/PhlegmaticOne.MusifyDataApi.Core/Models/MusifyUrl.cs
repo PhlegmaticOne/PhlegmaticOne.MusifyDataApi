@@ -17,12 +17,12 @@ public class MusifyUrl
         return new(parametrized);
     }
 
-    public static MusifyUrl BuildYearUrl(int year) => 
+    public static MusifyUrl BuildYearUrl(int year) =>
         new($"{MusifyConstants.SITE_URL}{MusifyConstants.ALBUMS_ACTION_NAME}/{year}");
 
     public string ToStringUrl() => _url;
 
-    private static string TryWrapWithSiteAddress(string url) => 
+    private static string TryWrapWithSiteAddress(string url) =>
         ContainsSiteUrl(url) == false ? MusifyConstants.SITE_URL + url : url;
 
     private static bool ContainsSiteUrl(string url) => url.Contains(MusifyConstants.SITE_URL);

@@ -16,7 +16,7 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService, IUseHtmlParse
 {
     private readonly IHtmlParsersAbstractFactory _htmlParsersFactory;
 
-    public MusifyArtistsDataService(IHtmlParsersAbstractFactory htmlParsersFactory) => 
+    public MusifyArtistsDataService(IHtmlParsersAbstractFactory htmlParsersFactory) =>
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ArtistInfoDto>> GetArtistInfoAsync(string url, bool includeCover = false) =>
@@ -26,7 +26,7 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService, IUseHtmlParse
     public async Task<OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>> GetArtistWithReleasesAsync(
         string url, bool includeArtistCover = false, bool includeReleaseCovers = false,
             SelectionType selectionType = SelectionType.Include, IEnumerable<MusifyReleaseType>? releaseTypes = null) =>
-                await OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>.FromActionResult(() => 
+                await OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>.FromActionResult(() =>
                     GetArtistWithReleasesPrivate(url, includeArtistCover, includeReleaseCovers, selectionType));
 
     private async Task<ArtistDataDto<ReleaseArtistPreviewDto>> GetArtistWithReleasesPrivate(

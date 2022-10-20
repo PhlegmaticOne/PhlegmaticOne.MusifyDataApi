@@ -10,11 +10,11 @@ using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Years;
 
-namespace PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests.Mocks;
 
 public class ParsersMocksCollection
 {
-    public static void SetupHtmlParsersFactoryWithPageParser<T>(Mock<IHtmlParsersAbstractFactory> htmlParsersFactoryMock, 
+    public static void SetupHtmlParsersFactoryWithPageParser<T>(Mock<IHtmlParsersAbstractFactory> htmlParsersFactoryMock,
         T pageParser) where T : IHtmlPageParserBase
     {
         htmlParsersFactoryMock
@@ -90,7 +90,7 @@ public class ParsersMocksCollection
 
         previewReleaseDataParser
             .Setup(x => x.GetGenres())
-            .Returns(genres.Select(x => new GenreDto(){ Name = x }));
+            .Returns(genres.Select(x => new GenreDto() { Name = x }));
 
 
         return previewReleaseDataParser.Object;

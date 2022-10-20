@@ -1,10 +1,8 @@
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using PhlegmaticOne.MusifyDataApi.Default.Tests.Mocks;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
-using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
+using PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests.Mocks;
 
-namespace PhlegmaticOne.MusifyDataApi.Default.Tests;
+namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests;
 
 public class MusifyArtistsDataServiceTests
 {

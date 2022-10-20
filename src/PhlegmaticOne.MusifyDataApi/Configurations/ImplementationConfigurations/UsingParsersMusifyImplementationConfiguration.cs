@@ -3,7 +3,7 @@ using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
-namespace PhlegmaticOne.MusifyDataApi.Extensions.Configurations.ImplementationConfigurations;
+namespace PhlegmaticOne.MusifyDataApi.Configurations.ImplementationConfigurations;
 
 public class UsingParsersMusifyImplementationConfiguration
 {
