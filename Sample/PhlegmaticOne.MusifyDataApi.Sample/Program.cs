@@ -4,11 +4,11 @@ using PhlegmaticOne.MusifyDataApi.Core;
 
 var services = BuildServiceProvider();
 
-//await SearchSample(services.GetRequiredService<IMusifyDataSearchService>());
+await SearchSample(services.GetRequiredService<IMusifyDataSearchService>());
 
 //await ArtistDataServiceSample(services.GetRequiredService<IMusifyArtistsDataService>());
 
-await ReleaseDataServiceSample(services.GetRequiredService<IMusifyReleasesDataService>());
+//await ReleaseDataServiceSample(services.GetRequiredService<IMusifyReleasesDataService>());
 
 Console.ReadLine();
 
@@ -55,37 +55,19 @@ static async Task ArtistDataServiceSample(IMusifyArtistsDataService artistsServi
 
 static async Task SearchSample(IMusifyDataSearchService searchDataService)
 {
-    const string query = "vinterriket";
+    const string query = "steineiche";
 
-    var artists = await searchDataService.SearchArtistsAsync(query);
-
-    if (artists.IsSuccess == false)
-    {
-        Console.WriteLine(artists.ErrorMessage);
-        return;
-    }
-
-    foreach (var artist in artists!.Result!.Items)
-    {
-        Console.WriteLine(artist.Name);
-        Console.WriteLine(artist.TracksCount);
-        Console.WriteLine();
-    }
-
-    var releases = await searchDataService.SearchReleasesAsync(query);
+    var releases = await searchDataService.SearchArtistsAsync(query, 4);
 
     if (releases.IsSuccess == false)
     {
-        Console.WriteLine(artists.ErrorMessage);
+        Console.WriteLine(releases.ErrorMessage);
         return;
     }
 
-    foreach (var releaseSearchPreviewDto in releases!.Result!.Items)
+    foreach (var releaseSearchPreviewDto in releases.Result!.Items)
     {
-        Console.WriteLine(releaseSearchPreviewDto.Title);
-        Console.WriteLine(releaseSearchPreviewDto.ArtistName);
         Console.WriteLine(releaseSearchPreviewDto.TracksCount);
-        Console.WriteLine(releaseSearchPreviewDto.YearReleased);
         Console.WriteLine();
     }
 }

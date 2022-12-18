@@ -34,7 +34,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
         var searchUrl = MusifyUrl.BuildSearchUrl(searchText).ToStringUrl();
         var searchPageParser = await _htmlParsersFactory.CreatePageParserAsync<ISearchPageParser>(searchUrl);
 
-        var result = new SearchResult<ReleaseSearchPreviewDto>()
+        var result = new SearchResult<ReleaseSearchPreviewDto>
         {
             Items = new List<ReleaseSearchPreviewDto>()
         };
@@ -43,7 +43,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
         {
             var releasePreviewParser = _htmlParsersFactory.CreateDataParser<ISearchReleaseDataParser>(htmlItem);
 
-            var artist = new ReleaseSearchPreviewDto
+            var release = new ReleaseSearchPreviewDto
             {
                 ArtistName = releasePreviewParser.GetArtistName(),
                 Title = releasePreviewParser.GetTitle(),
@@ -53,7 +53,7 @@ public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
                 Url = releasePreviewParser.GetUrl()
             };
 
-            result.Items.Add(artist);
+            result.Items.Add(release);
         }
 
         return result;

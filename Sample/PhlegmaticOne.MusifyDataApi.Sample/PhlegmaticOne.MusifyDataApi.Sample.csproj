@@ -9,7 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="PhlegmaticOne.MusifyDataApi" Version="1.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Core\PhlegmaticOne.MusifyDataApi.Core.csproj" />
+    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi\PhlegmaticOne.MusifyDataApi.csproj" />
   </ItemGroup>
 
 </Project>

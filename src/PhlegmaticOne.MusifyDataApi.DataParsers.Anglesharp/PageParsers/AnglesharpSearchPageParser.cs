@@ -9,23 +9,22 @@ internal class AnglesharpSearchPageParser : AnglesharpPageParserBase, ISearchPag
     public AnglesharpSearchPageParser(IHtmlStringGetter htmlStringGetter) : base(htmlStringGetter) { }
 
     public IEnumerable<object> GetArtistHtmlItems(int count = 5) =>
-        GetSearchItems(0, count);
+        GetSearchItems("artists", count);
 
     public IEnumerable<object> GetReleaseHtmlItems(int count = 20) =>
-        GetSearchItems(1, count);
+        GetSearchItems("albums", count);
 
-    private IEnumerable<object> GetSearchItems(int index, int count)
+    private IEnumerable<object> GetSearchItems(string linkId, int count)
     {
-        var elements = HtmlDocument.QuerySelectorAll("div.contacts.row").ToList();
+        var link = HtmlDocument.GetElementById(linkId);
 
-        if (elements.Any() == false)
+        if (link is null)
         {
             return Enumerable.Empty<object>();
         }
 
-        var htmlElements = elements[index]
-            .Children!
-            .Select(x => x.FirstElementChild)!
+        var htmlElements = link.NextElementSibling!.NextElementSibling!.Children
+            .Select(x => x.FirstElementChild)
             .ToList();
 
         return count > htmlElements.Count ? htmlElements! : (IEnumerable<object>)htmlElements.Take(count);

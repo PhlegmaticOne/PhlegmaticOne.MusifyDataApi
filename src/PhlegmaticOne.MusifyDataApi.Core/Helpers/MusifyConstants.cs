@@ -9,5 +9,6 @@ public static class MusifyConstants
     public const string RELEASES_ACTION_NAME = "/releases";
     public const string ARTIST_ACTION_NAME = "/artist";
     public const string SEARCH_ACTION_NAME = "/search";
+    public const string TRACK_ACTION_NAME = "/track";
     public const string SEARCH_TEXT_PARAMETER_NAME = "searchText";
 }

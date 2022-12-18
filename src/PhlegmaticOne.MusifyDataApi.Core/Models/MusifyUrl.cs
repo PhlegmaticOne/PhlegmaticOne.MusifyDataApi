@@ -23,7 +23,7 @@ public class MusifyUrl
     public string ToStringUrl() => _url;
 
     private static string TryWrapWithSiteAddress(string url) =>
-        ContainsSiteUrl(url) == false ? MusifyConstants.SITE_URL + url : url;
+        ContainsSiteName(url) == false ? MusifyConstants.SITE_URL + url : url;
 
-    private static bool ContainsSiteUrl(string url) => url.Contains(MusifyConstants.SITE_URL);
+    private static bool ContainsSiteName(string url) => url.Contains(MusifyConstants.SITE_NAME);
 }

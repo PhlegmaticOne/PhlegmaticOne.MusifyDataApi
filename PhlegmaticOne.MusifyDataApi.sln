@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests", "Tests\PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests\PhlegmaticOne.MusifyDataApi.Implementation.Parsers.Tests.csproj", "{AA36A324-4616-43AE-8DB4-449697A4F1CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Infrastructure", "src\PhlegmaticOne.MusifyDataApi.Infrastructure\PhlegmaticOne.MusifyDataApi.Infrastructure.csproj", "{DCF87595-B2DC-47D9-841D-74C0D18EC198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.MusifyDataApi.Infrastructure", "src\PhlegmaticOne.MusifyDataApi.Infrastructure\PhlegmaticOne.MusifyDataApi.Infrastructure.csproj", "{DCF87595-B2DC-47D9-841D-74C0D18EC198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.MusifyDataApi.Benchmarks", "Tests\PhlegmaticOne.MusifyDataApi.Benchmarks\PhlegmaticOne.MusifyDataApi.Benchmarks.csproj", "{D3492DB1-E0DD-4157-9284-DE26365291E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{DCF87595-B2DC-47D9-841D-74C0D18EC198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCF87595-B2DC-47D9-841D-74C0D18EC198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCF87595-B2DC-47D9-841D-74C0D18EC198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3492DB1-E0DD-4157-9284-DE26365291E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3492DB1-E0DD-4157-9284-DE26365291E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3492DB1-E0DD-4157-9284-DE26365291E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3492DB1-E0DD-4157-9284-DE26365291E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{06918A46-6EAE-4630-9631-3FDED7F687D4} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
 		{AA36A324-4616-43AE-8DB4-449697A4F1CC} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
 		{DCF87595-B2DC-47D9-841D-74C0D18EC198} = {B77BC8C4-896B-40F6-A860-F6D4A3FC8D41}
+		{D3492DB1-E0DD-4157-9284-DE26365291E5} = {90804C87-BEB3-43F4-AB32-3A512C69FD78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82A85886-8500-4B7F-89BF-30F2E7363876}
