@@ -38,7 +38,7 @@ public class MusifyArtistsDataServiceTests
     {
         var result = await _musifyArtistsDataService
             .GetArtistInfoAsync(_url);
-        var artist = result.Data!;
+        var artist = result.Result!;
 
         Assert.Equal("Country", artist.Country);
         Assert.Equal("Name", artist.Name);
@@ -52,7 +52,7 @@ public class MusifyArtistsDataServiceTests
     {
         var result = await _musifyArtistsDataService
             .GetArtistWithReleasesAsync(_url);
-        var artist = result.Data!;
+        var artist = result.Result!;
 
         Assert.Equal("Country", artist.Country);
         Assert.Equal("Name", artist.Name);

@@ -1,10 +1,9 @@
 ﻿using AngleSharp.Html.Dom;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.Core.Extensions;
 using PhlegmaticOne.MusifyDataApi.Core.Models;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
-using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Genres;
 using PhlegmaticOne.MusifyDataApi.Models.Years;

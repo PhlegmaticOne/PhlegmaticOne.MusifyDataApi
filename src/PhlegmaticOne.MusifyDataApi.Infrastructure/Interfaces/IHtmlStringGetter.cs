@@ -1,4 +1,4 @@
-﻿namespace PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
+﻿namespace PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
 public interface IHtmlStringGetter
 {

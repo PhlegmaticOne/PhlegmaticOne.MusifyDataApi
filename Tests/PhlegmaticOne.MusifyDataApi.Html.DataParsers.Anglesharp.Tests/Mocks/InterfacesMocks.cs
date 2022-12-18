@@ -1,5 +1,5 @@
 ﻿using Moq;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.Mocks;
 

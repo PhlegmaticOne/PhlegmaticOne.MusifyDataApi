@@ -1,14 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.DataDownload.Core\PhlegmaticOne.MusifyDataApi.DataDownload.Core.csproj" />
-    <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Models.Categories\PhlegmaticOne.MusifyDataApi.Models.Categories.csproj" />
+    <PackageReference Include="PhlegmaticOne.OperationResults" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PhlegmaticOne.MusifyDataApi.Models\PhlegmaticOne.MusifyDataApi.Models.csproj" />
   </ItemGroup>
 

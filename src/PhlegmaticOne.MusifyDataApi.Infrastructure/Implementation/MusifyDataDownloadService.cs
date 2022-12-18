@@ -1,7 +1,7 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core.Extensions;
-using PhlegmaticOne.MusifyDataApi.DataDownload.Core;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
-namespace PhlegmaticOne.MusifyDataApi.Core.Downloads;
+namespace PhlegmaticOne.MusifyDataApi.Infrastructure.Implementation;
 
 public class MusifyDataDownloadService : IMusifyDataDownloadService
 {

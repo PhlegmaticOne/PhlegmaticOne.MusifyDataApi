@@ -1,5 +1,6 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
-using PhlegmaticOne.MusifyDataApi.Html.Parsers.Http;
+using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.Mocks;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Implementation;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Tests.PageParsersTests;
 
@@ -9,7 +10,8 @@ public class AnglesharpPreviewReleasesPageParserTests
     private readonly AnglesharpPreviewReleasesPageParser _anglesharpPreviewReleasesPageParser;
     public AnglesharpPreviewReleasesPageParserTests()
     {
-        var htmlStringGetter = new HttpClientHtmlStringGetter();
+        var clientMock = HttpClientFactoryMock.ClientMock();
+        var htmlStringGetter = new HttpClientHtmlStringGetter(clientMock);
         _anglesharpPreviewReleasesPageParser = new(htmlStringGetter);
     }
 

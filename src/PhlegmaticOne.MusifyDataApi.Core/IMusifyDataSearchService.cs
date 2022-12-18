@@ -1,7 +1,7 @@
-﻿using PhlegmaticOne.MusifyDataApi.Core.Results;
-using PhlegmaticOne.MusifyDataApi.Models.Artists.Preview;
+﻿using PhlegmaticOne.MusifyDataApi.Models.Artists.Preview;
 using PhlegmaticOne.MusifyDataApi.Models.Composite;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Core;
 

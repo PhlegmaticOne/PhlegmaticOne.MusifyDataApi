@@ -1,8 +1,8 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core.Helpers;
-using PhlegmaticOne.MusifyDataApi.Core.Results;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Core;
 

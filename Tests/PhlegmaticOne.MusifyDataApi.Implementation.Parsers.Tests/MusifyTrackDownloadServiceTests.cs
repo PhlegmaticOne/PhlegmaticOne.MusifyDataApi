@@ -1,5 +1,5 @@
 ﻿using Moq;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Base;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
 
@@ -26,7 +26,7 @@ public class MusifyTrackDownloadServiceTests
             Duration = TimeSpan.FromMinutes(3)
         };
         var result = await _musifyTrackDownloadService.DownloadTrackAsync(track);
-        var downloadedTrack = result!.Data!;
+        var downloadedTrack = result!.Result!;
         Assert.Equal(track.DownloadUrl, downloadedTrack.DownloadUrl);
         Assert.Equal(track.Duration, downloadedTrack.Duration);
         Assert.Equal(track.Artists, downloadedTrack.Artists);

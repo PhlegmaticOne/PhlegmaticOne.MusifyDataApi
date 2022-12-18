@@ -35,7 +35,7 @@ public class MusifyDataSearchServiceTests
 
         var result = await _musifyDataSearchService.SearchArtistsAsync(searchText);
 
-        var artists = result!.Data!.Items;
+        var artists = result!.Result!.Items;
 
         Assert.Equal(5, artists.Count);
 
@@ -55,7 +55,7 @@ public class MusifyDataSearchServiceTests
 
         var result = await _musifyDataSearchService.SearchReleasesAsync(searchText);
 
-        var releases = result!.Data!.Items;
+        var releases = result!.Result!.Items;
 
         Assert.Equal(5, releases.Count);
 

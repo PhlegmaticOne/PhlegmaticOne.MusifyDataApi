@@ -1,5 +1,5 @@
-﻿using PhlegmaticOne.MusifyDataApi.Core.Results;
-using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
+﻿using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Core;
 

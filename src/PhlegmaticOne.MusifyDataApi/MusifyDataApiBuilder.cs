@@ -26,16 +26,10 @@ public class MusifyDataApiBuilder
         dataConfigurationBuilderAction(musifyDataApiConfiguration);
     }
 
-    public void ConfigureDataDownloadService(
-        Action<DataDownloadingConfiguration> dataDownloadingConfigurationBuilderAction)
+    public void ConfigureInfrastructure(
+        Action<InfrastructureConfiguration> infrastructureConfigurationBuilderAction)
     {
-        var configuration = new DataDownloadingConfiguration(_serviceCollection);
-        dataDownloadingConfigurationBuilderAction(configuration);
-    }
-
-    public void ConfigureHtmlGetter(Action<HtmlStringGetterConfiguration> htmlStringGetterBuilderAction)
-    {
-        var configuration = new HtmlStringGetterConfiguration(_serviceCollection);
-        htmlStringGetterBuilderAction(configuration);
+        var infrastructure = new InfrastructureConfiguration(_serviceCollection);
+        infrastructureConfigurationBuilderAction(infrastructure);
     }
 }

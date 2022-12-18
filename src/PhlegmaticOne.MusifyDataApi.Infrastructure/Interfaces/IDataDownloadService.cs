@@ -1,4 +1,4 @@
-﻿namespace PhlegmaticOne.MusifyDataApi.DataDownload.Core;
+﻿namespace PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
 public interface IDataDownloadService
 {

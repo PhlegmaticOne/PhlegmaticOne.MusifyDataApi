@@ -27,7 +27,7 @@ public class MusifyReleasesDataServiceTests
     public async Task GetReleaseInfoAsync_Test()
     {
         var result = await _musifyReleasesDataService.GetReleaseInfoAsync("");
-        var release = result!.Data!;
+        var release = result!.Result!;
 
         Assert.Equal("Title", release.Title);
         Assert.Equal(MusifyReleaseType.LP, release.ReleaseType);
@@ -39,7 +39,7 @@ public class MusifyReleasesDataServiceTests
     public async Task GetReleaseWithTracksInfoAsync_Test()
     {
         var result = await _musifyReleasesDataService.GetReleaseWithTracksInfoAsync("");
-        var release = result!.Data!;
+        var release = result!.Result!;
 
         Assert.Equal("Title", release.Title);
         Assert.Equal(MusifyReleaseType.LP, release.ReleaseType);

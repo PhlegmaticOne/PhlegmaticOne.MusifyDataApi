@@ -1,6 +1,6 @@
 ﻿using AngleSharp.Html.Dom;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
 using PhlegmaticOne.MusifyDataApi.Core.Extensions;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers.Base;
 

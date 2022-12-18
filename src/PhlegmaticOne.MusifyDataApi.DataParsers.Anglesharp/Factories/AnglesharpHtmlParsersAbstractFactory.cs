@@ -1,11 +1,10 @@
-﻿using PhlegmaticOne.MusifyDataApi.Core.Downloads;
-using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
+﻿using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.PageParsers;
-using PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 
 namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp.Factories;
 

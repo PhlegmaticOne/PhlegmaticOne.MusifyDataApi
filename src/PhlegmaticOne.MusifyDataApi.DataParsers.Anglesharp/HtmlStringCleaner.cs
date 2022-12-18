@@ -1,4 +1,4 @@
-﻿namespace PhlegmaticOne.MusifyDataApi.Html.Parsers.Core;
+﻿namespace PhlegmaticOne.MusifyDataApi.Html.DataParsers.Anglesharp;
 
 public class HtmlStringCleaner
 {

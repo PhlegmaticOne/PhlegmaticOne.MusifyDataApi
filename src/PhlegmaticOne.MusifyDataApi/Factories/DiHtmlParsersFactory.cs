@@ -16,8 +16,6 @@ internal class DiHtmlParsersFactory : IHtmlParsersAbstractFactory
         _dataParsers = dataParsers.ToList();
     }
 
-    public void InitializeFactories() { }
-
     public async Task<TParser> CreatePageParserAsync<TParser>(string url) where TParser : IHtmlPageParserBase
     {
         var parser = _pageParsers

@@ -1,10 +1,10 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
-using PhlegmaticOne.MusifyDataApi.Core.Results;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
@@ -16,12 +16,10 @@ public class MusifyReleasesDataService : IMusifyReleasesDataService, IUseHtmlPar
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ReleaseInfoDto>> GetReleaseInfoAsync(string url, bool includeCover = false) =>
-        await OperationResult<ReleaseInfoDto>
-            .FromActionResult(() => GetReleaseInfoAsyncPrivate(url, includeCover));
+        await OperationResult.FromActionResult(() => GetReleaseInfoAsyncPrivate(url, includeCover));
 
     public async Task<OperationResult<ReleaseDataDto<TrackInfoDto>>> GetReleaseWithTracksInfoAsync(string url, bool includeCover = false) =>
-        await OperationResult<ReleaseDataDto<TrackInfoDto>>.FromActionResult(() =>
-            GetReleaseWithTracksInfoAsyncPrivate(url, includeCover));
+        await OperationResult.FromActionResult(() => GetReleaseWithTracksInfoAsyncPrivate(url, includeCover));
 
     private async Task<ReleaseInfoDto> GetReleaseInfoAsyncPrivate(string url,
         bool includeCover = false)

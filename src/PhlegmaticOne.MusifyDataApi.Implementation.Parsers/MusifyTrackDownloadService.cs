@@ -1,8 +1,8 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
-using PhlegmaticOne.MusifyDataApi.Core.Downloads;
-using PhlegmaticOne.MusifyDataApi.Core.Results;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
+using PhlegmaticOne.MusifyDataApi.Infrastructure.Interfaces;
 using PhlegmaticOne.MusifyDataApi.Models.Tracks.Direct;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
@@ -14,7 +14,7 @@ public class MusifyTrackDownloadService : IMusifyTrackDownloadService, IUseHtmlP
         _dataDownloadService = dataDownloadService;
 
     public async Task<OperationResult<TrackDataDto>> DownloadTrackAsync(TrackInfoDto trackDto) =>
-        await OperationResult<TrackDataDto>.FromActionResult(() => DownloadTrackAsyncPrivate(trackDto));
+        await OperationResult.FromActionResult(() => DownloadTrackAsyncPrivate(trackDto));
 
     private async Task<TrackDataDto> DownloadTrackAsyncPrivate(TrackInfoDto trackDto)
     {

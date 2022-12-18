@@ -1,6 +1,5 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Core.Models;
-using PhlegmaticOne.MusifyDataApi.Core.Results;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
@@ -8,6 +7,7 @@ using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Preview;
 using PhlegmaticOne.MusifyDataApi.Models.Composite;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
@@ -20,12 +20,12 @@ public class MusifyDataSearchService : IMusifyDataSearchService, IUseHtmlParsers
 
     public async Task<OperationResult<SearchResult<ArtistPreviewDtoBase>>> SearchArtistsAsync(string searchText,
         int artistsCountToSelect = 5, bool includeCovers = false) =>
-        await OperationResult<SearchResult<ArtistPreviewDtoBase>>.FromActionResult(() =>
+        await OperationResult.FromActionResult(() =>
             SearchArtistsAsyncPrivate(searchText, artistsCountToSelect, includeCovers));
 
     public async Task<OperationResult<SearchResult<ReleaseSearchPreviewDto>>> SearchReleasesAsync(string searchText,
         int releasesCountToSelect = 20, bool includeCovers = false) =>
-        await OperationResult<SearchResult<ReleaseSearchPreviewDto>>.FromActionResult(() =>
+        await OperationResult.FromActionResult(() =>
             SearchReleasesAsyncPrivate(searchText, releasesCountToSelect, includeCovers));
 
     private async Task<SearchResult<ReleaseSearchPreviewDto>> SearchReleasesAsyncPrivate(string searchText,

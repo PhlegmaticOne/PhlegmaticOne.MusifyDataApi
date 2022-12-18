@@ -1,7 +1,6 @@
 ﻿using PhlegmaticOne.MusifyDataApi.Core;
 using PhlegmaticOne.MusifyDataApi.Core.Extensions;
 using PhlegmaticOne.MusifyDataApi.Core.Helpers;
-using PhlegmaticOne.MusifyDataApi.Core.Results;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Base;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.DataParsers;
 using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.Factories;
@@ -9,6 +8,7 @@ using PhlegmaticOne.MusifyDataApi.Html.DataParsers.Abstractions.PageParsers;
 using PhlegmaticOne.MusifyDataApi.Models.Artists.Direct;
 using PhlegmaticOne.MusifyDataApi.Models.Enums;
 using PhlegmaticOne.MusifyDataApi.Models.Releases.Preview;
+using PhlegmaticOne.OperationResults;
 
 namespace PhlegmaticOne.MusifyDataApi.Implementation.Parsers;
 
@@ -20,13 +20,13 @@ public class MusifyArtistsDataService : IMusifyArtistsDataService, IUseHtmlParse
         _htmlParsersFactory = htmlParsersFactory;
 
     public async Task<OperationResult<ArtistInfoDto>> GetArtistInfoAsync(string url, bool includeCover = false) =>
-        await OperationResult<ArtistInfoDto>.FromActionResult(() =>
+        await OperationResult.FromActionResult(() =>
             GetArtistInfoAsyncPrivate<ArtistInfoDto>(url, includeCover));
 
     public async Task<OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>> GetArtistWithReleasesAsync(
         string url, bool includeArtistCover = false, bool includeReleaseCovers = false,
             SelectionType selectionType = SelectionType.Include, IEnumerable<MusifyReleaseType>? releaseTypes = null) =>
-                await OperationResult<ArtistDataDto<ReleaseArtistPreviewDto>>.FromActionResult(() =>
+                await OperationResult.FromActionResult(() =>
                     GetArtistWithReleasesPrivate(url, includeArtistCover, includeReleaseCovers, selectionType));
 
     private async Task<ArtistDataDto<ReleaseArtistPreviewDto>> GetArtistWithReleasesPrivate(

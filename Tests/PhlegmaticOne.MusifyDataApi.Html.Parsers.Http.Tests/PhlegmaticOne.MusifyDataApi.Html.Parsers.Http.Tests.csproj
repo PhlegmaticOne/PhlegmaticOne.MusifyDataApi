@@ -21,8 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http\PhlegmaticOne.MusifyDataApi.Html.Parsers.Http.csproj" />
-  </ItemGroup>
-
 </Project>

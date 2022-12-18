@@ -17,7 +17,7 @@ static async Task ReleaseDataServiceSample(IMusifyReleasesDataService releasesDa
     const string url = "https://musify.club/release/austere-isolation-bleak-2008-203267";
 
     var result = await releasesDataService.GetReleaseWithTracksInfoAsync(url);
-    var release = result.Data!;
+    var release = result.Result!;
 
     Console.WriteLine(release.Title);
     Console.WriteLine(release.YearReleased);
@@ -36,7 +36,7 @@ static async Task ArtistDataServiceSample(IMusifyArtistsDataService artistsServi
 {
     const string url = "https://musify.club/artist/austere-21896";
     var result = await artistsService.GetArtistWithReleasesAsync(url);
-    var artist = result!.Data!;
+    var artist = result!.Result!;
 
     Console.WriteLine(artist.Name);
     Console.WriteLine(artist.Country);
@@ -59,13 +59,13 @@ static async Task SearchSample(IMusifyDataSearchService searchDataService)
 
     var artists = await searchDataService.SearchArtistsAsync(query);
 
-    if (artists.IsOk == false)
+    if (artists.IsSuccess == false)
     {
-        Console.WriteLine(artists.ExceptionThrown);
+        Console.WriteLine(artists.ErrorMessage);
         return;
     }
 
-    foreach (var artist in artists!.Data!.Items)
+    foreach (var artist in artists!.Result!.Items)
     {
         Console.WriteLine(artist.Name);
         Console.WriteLine(artist.TracksCount);
@@ -74,13 +74,13 @@ static async Task SearchSample(IMusifyDataSearchService searchDataService)
 
     var releases = await searchDataService.SearchReleasesAsync(query);
 
-    if (releases.IsOk == false)
+    if (releases.IsSuccess == false)
     {
-        Console.WriteLine(artists.ExceptionThrown);
+        Console.WriteLine(artists.ErrorMessage);
         return;
     }
 
-    foreach (var releaseSearchPreviewDto in releases!.Data!.Items)
+    foreach (var releaseSearchPreviewDto in releases!.Result!.Items)
     {
         Console.WriteLine(releaseSearchPreviewDto.Title);
         Console.WriteLine(releaseSearchPreviewDto.ArtistName);
@@ -104,13 +104,9 @@ static IServiceProvider BuildServiceProvider()
                 a.UseDefaultRealizations();
             });
         });
-        b.ConfigureDataDownloadService(d =>
+        b.ConfigureInfrastructure(p =>
         {
-            d.UseDefaultDataDownloadService();
-        });
-        b.ConfigureHtmlGetter(h =>
-        {
-            h.UseDefaultHtmlStringGetter();
+            p.UseDefaultInfrastructure();
         });
     });
 
