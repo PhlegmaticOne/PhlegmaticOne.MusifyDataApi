@@ -14,7 +14,7 @@ public static class ServiceCollectionExtensions
         });
         services.AddScoped<IHtmlStringGetter, HttpClientHtmlStringGetter>();
         services.AddScoped<IDataDownloadService, HttpClientDataDownloadService>();
-        services.AddSingleton<IMusifyDataDownloadService, MusifyDataDownloadService>();
+        services.AddScoped<IMusifyDataDownloadService, MusifyDataDownloadService>();
         return services;
     }
 }

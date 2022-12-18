@@ -19,12 +19,12 @@ public class HtmlParsersAbstractFactoryConfiguration
 
     public void UseDefaultHtmlParsersAbstractFactory()
     {
-        _serviceCollection.AddSingleton<IHtmlParsersAbstractFactory, AnglesharpHtmlParsersAbstractFactory>();
+        _serviceCollection.AddScoped<IHtmlParsersAbstractFactory, AnglesharpHtmlParsersAbstractFactory>();
     }
 
     public void UseCustomHtmlAbstractFactory<TFactory>() where TFactory : class, IHtmlParsersAbstractFactory
     {
-        _serviceCollection.AddSingleton<IHtmlParsersAbstractFactory, TFactory>();
+        _serviceCollection.AddScoped<IHtmlParsersAbstractFactory, TFactory>();
     }
 
     public void ConfigureHtmlAbstractFactory(Action<HtmlPageParsersConfiguration> pageParsersBuilderAction,
@@ -48,7 +48,7 @@ public class HtmlParsersAbstractFactoryConfiguration
 
     private void AddParsersFactory()
     {
-        _serviceCollection.AddSingleton<IHtmlParsersAbstractFactory, DiHtmlParsersFactory>(x =>
+        _serviceCollection.AddScoped<IHtmlParsersAbstractFactory, DiHtmlParsersFactory>(x =>
         {
             var dataParserFactories = x.GetServices<IFactory<IHtmlDataParserBase>>();
             var pageParserFactories = x.GetServices<IFactory<IHtmlPageParserBase>>();

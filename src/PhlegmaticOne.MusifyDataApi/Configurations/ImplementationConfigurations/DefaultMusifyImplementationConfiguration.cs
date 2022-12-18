@@ -12,24 +12,24 @@ public class DefaultMusifyImplementationConfiguration
 
     public void UseArtistsDataService<T>()
         where T : class, IMusifyArtistsDataService =>
-        AddSingleton<IMusifyArtistsDataService, T>();
+        AddScoped<IMusifyArtistsDataService, T>();
 
     public void UseDataSearchService<T>()
         where T : class, IMusifyDataSearchService =>
-        AddSingleton<IMusifyDataSearchService, T>();
+        AddScoped<IMusifyDataSearchService, T>();
 
     public void UseReleasesDataService<T>()
         where T : class, IMusifyReleasesDataService =>
-        AddSingleton<IMusifyReleasesDataService, T>();
+        AddScoped<IMusifyReleasesDataService, T>();
 
     public void UseDownloadTrackService<T>()
         where T : class, IMusifyTrackDownloadService =>
-        AddSingleton<IMusifyTrackDownloadService, T>();
+        AddScoped<IMusifyTrackDownloadService, T>();
 
-    private void AddSingleton<TBase, TImpl>()
+    private void AddScoped<TBase, TImpl>()
         where TBase : class
         where TImpl : class, TBase
     {
-        _serviceCollection.AddSingleton<TBase, TImpl>();
+        _serviceCollection.AddScoped<TBase, TImpl>();
     }
 }

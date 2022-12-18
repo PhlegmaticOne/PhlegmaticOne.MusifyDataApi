@@ -14,19 +14,19 @@ public class UsingParsersMusifyImplementationConfiguration
 
     public void UseArtistsDataService<T>()
         where T : class, IMusifyArtistsDataService, IUseHtmlParsers =>
-        AddSingleton<IMusifyArtistsDataService, T>();
+        AddScoped<IMusifyArtistsDataService, T>();
 
     public void UseDataSearchService<T>()
         where T : class, IMusifyDataSearchService, IUseHtmlParsers =>
-        AddSingleton<IMusifyDataSearchService, T>();
+        AddScoped<IMusifyDataSearchService, T>();
 
     public void UseReleasesDataService<T>()
         where T : class, IMusifyReleasesDataService, IUseHtmlParsers =>
-        AddSingleton<IMusifyReleasesDataService, T>();
+        AddScoped<IMusifyReleasesDataService, T>();
 
     public void UseDownloadTrackService<T>()
         where T : class, IMusifyTrackDownloadService, IUseHtmlParsers =>
-        AddSingleton<IMusifyTrackDownloadService, T>();
+        AddScoped<IMusifyTrackDownloadService, T>();
 
 
     public void UseDefaultRealizations()
@@ -37,10 +37,10 @@ public class UsingParsersMusifyImplementationConfiguration
         UseReleasesDataService<MusifyReleasesDataService>();
     }
 
-    private void AddSingleton<TBase, TImpl>()
+    private void AddScoped<TBase, TImpl>()
         where TBase : class
         where TImpl : class, TBase
     {
-        _serviceCollection.AddSingleton<TBase, TImpl>();
+        _serviceCollection.AddScoped<TBase, TImpl>();
     }
 }

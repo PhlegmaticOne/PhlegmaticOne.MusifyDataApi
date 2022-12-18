@@ -14,8 +14,8 @@ public class HtmlDataParsersConfiguration
         where TBase : class, IHtmlDataParserBase
         where TImpl : class, TBase
     {
-        _serviceCollection.AddTransient<TBase, TImpl>();
-        _serviceCollection.AddTransient<IFactory<IHtmlDataParserBase>, Factory<TBase>>(x =>
+        _serviceCollection.AddScoped<TBase, TImpl>();
+        _serviceCollection.AddScoped<IFactory<IHtmlDataParserBase>, Factory<TBase>>(x =>
             new Factory<TBase>(x.GetRequiredService<TBase>, typeof(TBase)));
         return this;
     }
