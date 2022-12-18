@@ -88,7 +88,7 @@ static IServiceProvider BuildServiceProvider()
         });
         b.ConfigureInfrastructure(p =>
         {
-            p.UseDefaultInfrastructure();
+            p.UseDefaultInfrastructure(TimeSpan.FromMinutes(5));
         });
     });
 

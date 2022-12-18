@@ -12,8 +12,8 @@ public class InfrastructureConfiguration
     public InfrastructureConfiguration(IServiceCollection serviceCollection) => 
         _serviceCollection = serviceCollection;
 
-    public void UseDefaultInfrastructure() => 
-        _serviceCollection.UseDefaultInfrastructure();
+    public void UseDefaultInfrastructure(TimeSpan requestExecutionTimeout) => 
+        _serviceCollection.UseDefaultInfrastructure(requestExecutionTimeout);
 
     public void UseCustomDataDownloadService<T>(
         bool addDefaultMusifyDataDownloadServiceWithThisImplementation = true) 

@@ -6,11 +6,11 @@ namespace PhlegmaticOne.MusifyDataApi.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection UseDefaultInfrastructure(this IServiceCollection services)
+    public static IServiceCollection UseDefaultInfrastructure(this IServiceCollection services, TimeSpan requestExecutionTimeout)
     {
         services.AddHttpClient(HttpClientConstants.ServerName, client =>
         {
-            client.Timeout = TimeSpan.FromSeconds(15);
+            client.Timeout = requestExecutionTimeout;
         });
         services.AddScoped<IHtmlStringGetter, HttpClientHtmlStringGetter>();
         services.AddScoped<IDataDownloadService, HttpClientDataDownloadService>();
